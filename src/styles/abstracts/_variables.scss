@@ -1,0 +1,64 @@
+@font-face {
+  font-family: RedRose;
+  src: url("./../../public/fonts/RedRose-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: DeliusUnicase;
+  src: url("./../../public/fonts/DeliusUnicase-Regular.ttf");
+}
+@font-face {
+  font-family: Figtree;
+  src: url("./../../public/fonts/Figtree-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: KleeOne;
+  src: url("./../../public/fonts/KleeOne-Regular.ttf");
+}
+@font-face {
+  font-family: Orbitron;
+  src: url("./../../public/fonts/Orbitron-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: Almarai;
+  src: url("./../../public/fonts/Almarai-Regular.ttf");
+}
+
+
+
+
+$color-code: (
+bg-primary: #66CFBC,
+bg-secondary: #86E9D624,
+bg-border: #4DD5BC,
+text-primary: #303131,
+text-secondary: #4DD5BC
+);
+
+$color-game: (
+bg-primary: #BFE5F2,
+bg-secondary: #FD8A81,
+bg-border: transparent,
+text-primary: #294F60,
+text-secondary:#FFFFFF,
+text-tertiary: #ED1B76,
+);
+
+$color-food: (
+bg-primary: #FFAB3E,
+bg-secondary: #F3832D,
+bg-border:  #F3832D,
+text-primary:#A45212,
+text-secondary:#FFFFFF,
+text-tertiary:#F3832D
+);
+
+$color-da: (
+bg-primary: #ED1B76,
+bg-secondary: #ED1B7614,
+bg-border: #E71C4F,
+text-primary:#294F60,
+text-secondary:#1E7594,
+text-tertiary:#FFFFFF
+)
+
+
