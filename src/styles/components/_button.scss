@@ -1,0 +1,19 @@
+@use "../abstracts/" as *;
+
+.btn {
+  border-style: none;
+  @include dFlex($fd: row, $g: 8px);
+  padding: 1%;
+}
+
+.btn {
+  &--primary {
+    background-color: #f0ea6e;
+    @include font($ff: "RedRose");
+    @include size($w: min(250px, 50%));
+    > img {
+      aspect-ratio: 1 / 1;
+      width: min(40px, 20%);
+    }
+  }
+}

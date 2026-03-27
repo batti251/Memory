@@ -1,0 +1,33 @@
+@use "./../abstracts/" as *;
+
+.hero {
+  height: 100%;
+  @include dFlex();
+  @include font();
+}
+
+.starting-screen {
+  @include dFlex($g: 50%);
+  @include size($w: min(800px, 90%));
+
+&__headlines{
+    @include dFlex($g: 20%, $ai: unset);
+    
+    &-eyebrow{
+        @include font($c: white, $fw: 400, $fs: clamp(1.125rem, 2rem, 3vw), $lh: 100%);
+    }
+    &-h1{
+        @include font($c: white, $fw: 700, $fs: clamp(2rem, 4rem, 7vw), $lh: 100%, $ff: "RedRose");
+
+    }
+}
+
+}
+
+.controller-hero{
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    width: min(300px, 40%);
+    bottom: 0;
+    left: 0;
+}
