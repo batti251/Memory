@@ -1,0 +1,42 @@
+@use "./../abstracts/" as *;
+
+body{
+    background-color: white !important;
+}
+
+.settings {
+    &__headlines{
+
+        &-h1{
+            @include font($c: #303131, $fw: 700, $fs: clamp(2rem, 4rem, 7vw), $lh: 100%, $ff: "RedRose");
+        }
+        &-h2{
+            @include font($c: #303131, $fw: 700, $fs: clamp(1.75rem, 2.25rem, 6vw), $lh: 100%, $ff: "Almarai");
+        }
+    }
+  &__radio {
+      @include dFlex($ai: unset, $g: 16px);
+  }
+
+  &__inputs {
+    @include dFlex($ai: unset, $jc: unset, $g: 8px);
+
+    &-radio {
+    @include dFlex($jc: unset, $fd: unset, $g: 8px);
+    width: 100%;
+      @include font($c: #303131,  $fs: clamp(1.125rem, 2rem, 2vw),$ff: "Almarai");
+
+    }
+
+  }
+}
+
+input[type=radio]:checked + label {
+    font-weight: 700;
+
+    &::after{
+        content: "";
+        background-image: url('./../../public/icons/line_wand.svg');
+    }
+}
+
