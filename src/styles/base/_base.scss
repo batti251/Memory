@@ -15,3 +15,13 @@ body {
   margin-block: 0;
   padding: 0;
 }
+
+input[type=radio]{
+  appearance: none;
+  background-image: url('./../../public/icons/checkbox_unchecked.svg');
+  @include size($w:20px, $h: 20px);
+
+  &:checked{
+    background-image: url('./../../public/icons/checkbox_checked.svg');
+  }
+}

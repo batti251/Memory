@@ -6,8 +6,8 @@
     <title>Memory - Settings</title>
 </head>
 <body>
-       <main class="settings__wrap">
-
+       <main class="main__wrap">
+        <section class="settings__wrap">
         <section class="settings">
             <article class="settings__headlines">
                 <h1 class="settings__headlines-h1">Settings</h1>
@@ -16,7 +16,7 @@
         </section>
 
         <section class="settings__radio">
-            <article class="settings__headlines">
+            <article class="settings__headlines settings__headlines--game ">
                 <img src="" alt="">
                 <h2 class="settings__headlines-h2">Game themes</h2>
             </article>
@@ -29,7 +29,7 @@
         </section>
 
         <section class="settings__radio">
-            <article class="settings__headlines">
+            <article class="settings__headlines settings__headlines--player">
                 <img src="" alt="">
                 <h2 class="settings__headlines-h2">Choose player</h2>
             </article>
@@ -40,7 +40,7 @@
         </section>
 
         <section class="settings__radio">
-            <article class="settings__headlines">
+            <article class="settings__headlines settings__headlines--board">
                 <img src="" alt="">
                 <h2 class="settings__headlines-h2">Board size</h2>
             </article>
@@ -51,6 +51,22 @@
             </article>
             
         </section>
+        </section>
+        <section class="settings__preview">
+        <img src="./../public/decks/theme_code/preview_code.svg" alt="">
+        <aside class="settings__bar">
+          <ul class="settings__bar-list">
+            <li class="settings__bar-list-point">Game theme</li>
+            <li class="settings__bar-list-point">Player</li>
+            <li class="settings__bar-list-point">Board size</li>
+          </ul>
+          <button class="btn btn--start-game">
+            <img src="./../public/icons/play_0deg.svg" alt="play_button">
+            Start
+          </button>
+        </aside>
+        </section>
+
 
 
         <script type="module" src="/src/main.ts"></script>

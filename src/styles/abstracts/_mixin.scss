@@ -1,5 +1,14 @@
 @use "variables" as *;
 
+
+$breakpoints: (
+    m: 768px
+);
+
+
+
+
+
 @mixin buttton($bgc: $color-primary) {
   background-color: $bgc;
 }
@@ -31,5 +40,11 @@
   right: $r;
   bottom: $b;
   left: $l;
+}
+
+@mixin respond($size){
+    @media screen and (max-width: map-get($breakpoints, $size)) {
+        @content
+    }
 }
 

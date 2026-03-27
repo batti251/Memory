@@ -1,5 +1,30 @@
 @use "./../abstracts/" as *;
 
-.settings__wrap {
-  padding: 8%;
+
+
+
+
+.main__wrap {
+  padding: 2%;
+  @include dFlex($jc: space-around, $fd: unset);
+  @include respond(m){
+    flex-direction: column;
+    justify-content: center
+  };
+}
+
+.settings {
+  &__wrap {
+    @include dFlex($jc: unset, $ai: unset, $g: 8px);
+  }
+  &__preview {
+     @include dFlex($ai: end, $g: 24px);
+     @include respond(m){
+        align-items: center;
+     }
+     > img {
+        aspect-ratio: 1 / 1;
+        width: 80%;
+     }
+  }
 }

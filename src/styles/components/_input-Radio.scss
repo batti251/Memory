@@ -5,17 +5,46 @@ body{
 }
 
 .settings {
+    margin: 0 0 6% 0 ;
     &__headlines{
-
         &-h1{
-            @include font($c: #303131, $fw: 700, $fs: clamp(2rem, 4rem, 7vw), $lh: 100%, $ff: "RedRose");
+            @include font($c: #303131, $fw: 700, $fs: clamp(3em, 4rem, 7vw), $lh: 100%, $ff: "RedRose");
         }
         &-h2{
-            @include font($c: #303131, $fw: 700, $fs: clamp(1.75rem, 2.25rem, 6vw), $lh: 100%, $ff: "Almarai");
+            @include font($c: #303131, $fw: 700, $fs: clamp(1.75rem, 2.25rem, 3vw), $lh: 100%, $ff: "Almarai");
+        }
+         &--game{
+        @include dFlex($fd: unset, $jc: unset, $g: 8px);
+
+        &:before{
+            content: url('./../../public/icons/color-palette.svg');
+            width: 20px;
+            height: 30px;
+        }
+        }
+         &--player{
+        @include dFlex($fd: unset, $jc: unset, $g: 8px);
+
+        &:before{
+            content: url('./../../public/icons/chess_pawn.svg');
+            width: 20px;
+            height: 30px;
+        }
+        }
+        &--board{
+        @include dFlex($fd: unset, $jc: unset, $g: 8px);
+
+        &:before{
+            content: url('./../../public/icons/card_board.svg');
+            width: 20px;
+            height: 30px;
+        }
         }
     }
   &__radio {
       @include dFlex($ai: unset, $g: 16px);
+       margin: 0 0 24px 0;
+
   }
 
   &__inputs {
@@ -33,7 +62,6 @@ body{
 
 input[type=radio]:checked + label {
     font-weight: 700;
-
     &::after{
         content: "";
         background-image: url('./../../public/icons/line_wand.svg');

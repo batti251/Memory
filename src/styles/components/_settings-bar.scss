@@ -1,0 +1,21 @@
+@use "../abstracts/" as *;
+
+.settings__bar {
+  @include dFlex($fd: unset, $g: 16px);
+  width: 100%;
+  background-color: #f6f6f6;
+  &-list {
+    @include dFlex($fd: unset, $g: 8px);
+    @include font();
+
+    &-point {
+        @include dFlex($fd: unset);
+      &::marker {
+        content: "";
+      }
+      &:nth-child(n+2):before{
+        content: url('./../../public/icons/line_stroke.svg');
+      }
+    }
+  }
+}
