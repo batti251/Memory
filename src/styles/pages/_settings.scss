@@ -1,30 +1,47 @@
 @use "./../abstracts/" as *;
 
-
-
-
-
 .main__wrap {
-  padding: 2%;
-  @include dFlex($jc: space-around, $fd: unset);
-  @include respond(m){
+  padding: 3%;
+  @include dFlex($jc: space-around, $ai: unset);
+  background-color: white;
+
+  &:has(#theme-1:checked) #img-preview {
+    background-image: url("./../../public/decks/theme_code/preview_code.svg");
+  }
+  &:has(#theme-2:checked) #img-preview {
+    background-image: url("./../../public/decks/theme_game/preview_game.svg");
+  }
+  &:has(#theme-3:checked) #img-preview {
+    background-image: url("./../../public/decks/theme_da/preview_da.svg");
+  }
+  &:has(#theme-4:checked) #img-preview {
+    background-image: url("./../../public/decks/theme_food/preview_food.svg");
+  }
+  @include respond(m) {
     flex-direction: column;
-    justify-content: center
-  };
+    justify-content: center;
+  }
 }
+
+$themes: "da", "food", "code", "game";
 
 .settings {
   &__wrap {
-    @include dFlex($jc: unset, $ai: unset, $g: 8px);
+    @include dFlex($jc: space-between, $ai: start, $g: 8px, $fd: unset);
+    height: 100%;
+    @include respond(m) {
+      flex-direction: column;
+    }
   }
   &__preview {
-     @include dFlex($ai: end, $g: 24px);
-     @include respond(m){
-        align-items: center;
-     }
-     > img {
-        aspect-ratio: 1 / 1;
-        width: 80%;
-     }
+    @include dFlex($ai: end, $g: 24px);
+    @include size($w: min(480px, 80%));
   }
+}
+
+#img-preview {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
 }

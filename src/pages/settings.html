@@ -7,13 +7,21 @@
 </head>
 <body>
        <main class="main__wrap">
-        <section class="settings__wrap">
-        <section class="settings">
+
+
+                <header class="settings">
             <article class="settings__headlines">
                 <h1 class="settings__headlines-h1">Settings</h1>
                 <img src="./../public/icons/line_wand.svg" alt="yellow_underline_wand-look-alike">
             </article>
-        </section>
+        </header>
+
+
+        <section class="settings__wrap">
+
+    
+        <section >
+
 
         <section class="settings__radio">
             <article class="settings__headlines settings__headlines--game ">
@@ -21,10 +29,10 @@
                 <h2 class="settings__headlines-h2">Game themes</h2>
             </article>
             <article class="settings__inputs">
-                <div class="settings__inputs-radio"><input type="radio" name="game-theme" id="theme-1"><label>Code vibes theme</label></div>
-                <div class="settings__inputs-radio"><input type="radio" name="game-theme" id="theme-2"><label>Gaming theme</label></div>
-                <div class="settings__inputs-radio"><input type="radio" name="game-theme" id="theme-3"><label>DA Projects theme</label></div>
-                <div class="settings__inputs-radio"><input type="radio" name="game-theme" id="theme-4"><label>Foods theme</label></div>
+                <div class="settings__inputs-radio"><input type="radio" name="game-theme" id="theme-1" data-preview="code"><label>Code vibes theme</label></div>
+                <div class="settings__inputs-radio"><input type="radio" name="game-theme" id="theme-2" data-preview="game"><label>Gaming theme</label></div>
+                <div class="settings__inputs-radio"><input type="radio" name="game-theme" id="theme-3" data-preview="da"><label>DA Projects theme</label></div>
+                <div class="settings__inputs-radio"><input type="radio" name="game-theme" id="theme-4" data-preview="food"><label>Foods theme</label></div>
             </article>
         </section>
 
@@ -53,7 +61,7 @@
         </section>
         </section>
         <section class="settings__preview">
-        <img src="./../public/decks/theme_code/preview_code.svg" alt="">
+        <figure id="img-preview"></figure>
         <aside class="settings__bar">
           <ul class="settings__bar-list">
             <li class="settings__bar-list-point">Game theme</li>
@@ -67,7 +75,7 @@
         </aside>
         </section>
 
-
+            </section>
 
         <script type="module" src="/src/main.ts"></script>
 </body>

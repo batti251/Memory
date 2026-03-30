@@ -1,9 +1,5 @@
 @use "./../abstracts/" as *;
 
-body{
-    background-color: white !important;
-}
-
 .settings {
     margin: 0 0 6% 0 ;
     &__headlines{
@@ -52,9 +48,12 @@ body{
 
     &-radio {
     @include dFlex($jc: unset, $fd: unset, $g: 8px);
-    width: 100%;
+    width: 400px;
+    height: 100%;
       @include font($c: #303131,  $fs: clamp(1.125rem, 2rem, 2vw),$ff: "Almarai");
-
+          @include respond(m){
+        width: 100%;
+    }
     }
 
   }
@@ -63,8 +62,11 @@ body{
 input[type=radio]:checked + label {
     font-weight: 700;
     &::after{
-        content: "";
-        background-image: url('./../../public/icons/line_wand.svg');
+        content: url('./../../public/icons/line_wand.svg');
+        position: relative;
+        top: 3px;
+        left: 4px;
     }
 }
+
 
