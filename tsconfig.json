@@ -4,7 +4,6 @@
     "target": "ESNext",                  // moderne Syntax, gut für Browser + Vite
     "lib": ["ESNext", "DOM"],            // Browser-APIs und moderne JS-Funktionen
 
-
     /* Module & Auflösung */
     "module": "ESNext",                  // ES Modules für Vite/Rollup
     "moduleResolution": "Bundler",       // spezielle Auflösung für Vite, ersetzt "node"

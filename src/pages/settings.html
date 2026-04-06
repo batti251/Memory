@@ -42,8 +42,8 @@
                 <h2 class="settings__headlines-h2">Choose player</h2>
             </article>
             <article class="settings__inputs">
-                <div class="settings__inputs-radio"><input type="radio" name="player-color" id="color-blue"><label>Blue</label></div>
-                <div class="settings__inputs-radio"><input type="radio" name="player-color" id="color-orange"><label>Orange</label></div>
+                <div class="settings__inputs-radio"><input type="radio" name="player-color" id="color-blue" data-preview="blue"><label>Blue</label></div>
+                <div class="settings__inputs-radio"><input type="radio" name="player-color" id="color-orange" data-preview="orange"><label>Orange</label></div>
         </article>
         </section>
 
@@ -53,9 +53,9 @@
                 <h2 class="settings__headlines-h2">Board size</h2>
             </article>
             <article class="settings__inputs">
-                <div class="settings__inputs-radio"><input type="radio" name="board-size" id="board-1"><label>16 cards</label> </div>
-                <div class="settings__inputs-radio"><input type="radio" name="board-size" id="board-2"><label>24 cards</label> </div>
-                <div class="settings__inputs-radio"><input type="radio" name="board-size" id="board-3"><label>36 cards</label> </div>
+                <div class="settings__inputs-radio"><input type="radio" name="board-size" id="board-1" data-preview="16"><label>16 cards</label> </div>
+                <div class="settings__inputs-radio"><input type="radio" name="board-size" id="board-2" data-preview="24"><label>24 cards</label> </div>
+                <div class="settings__inputs-radio"><input type="radio" name="board-size" id="board-3" data-preview="36"><label>36 cards</label> </div>
             </article>
             
         </section>
@@ -68,7 +68,7 @@
             <li class="settings__bar-list-point">Player</li>
             <li class="settings__bar-list-point">Board size</li>
           </ul>
-          <button class="btn btn--start-game">
+          <button id="btn-start" class="btn btn--start-game">
             <img src="./../public/icons/play_0deg.svg" alt="play_button">
             Start
           </button>
