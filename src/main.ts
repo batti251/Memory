@@ -1,5 +1,6 @@
 import './styles/main.scss';
-
+import { loadHeader } from './templates/game';
+import { loadBoard } from './templates/game';
 
 let gameSettings: string[] = [];
 let gameSettingsPicked: string[] = [];
@@ -49,10 +50,24 @@ function addGameSetting(e:HTMLInputElement) {
 }
 
 /**
- * If all required game-settings are collected, the Game will initialize
+ * If all required game-settings are collected, it will store it into session storage 
  */
 function gameStart() {
     if (gameSettingsPicked.length >= 3) {
         window.open('game.html', '_self')
+        sessionStorage.setItem('memory', JSON.stringify(gameSettingsPicked));
     }
+}
+
+loader();
+
+function loader() {
+    addEventListener('load', () => {
+        const header = document.getElementsByTagName('header');
+        header[0].innerHTML = loadHeader();
+        const gameBoard = document.getElementById('board') as HTMLElement;
+        gameBoard.innerHTML = loadBoard();
+        
+        
+    })    
 }
