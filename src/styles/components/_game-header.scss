@@ -1,15 +1,15 @@
-@use "./../abstracts/" as *;
+@use './../abstracts/' as *;
 
 #header{
   padding: 4%;
-   
-    &:has(.game__header--code){
+  &:has(.game__header--code){
     background-color: #303131;
   }
   &:has(.game__header--game){
     background-color: #294F60;
   }
 }
+
 .game__header {
   @include dFlex($fd: unset, $jc: space-between);
   padding: 0 2%;
@@ -94,23 +94,5 @@
   }
   &--da{
     @include font($ff: Figtree, $c: #1E7594, $fw: 700);
-  }
-}
-
-#board{
-  height: 90%;
-
-}
-
-.board{
-  height: 100%;
-  &__code{
-    background-color: #303131;
-  }
-  &__game{
-    background-color: #294F60;
-  }
-  &__da, __food{
-    background-color: white;
   }
 }
