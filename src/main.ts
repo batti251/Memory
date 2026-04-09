@@ -59,15 +59,16 @@ function gameStart() {
     }
 }
 
-loader();
-
-function loader() {
+initGame();
+/**
+ * Loads game screen
+ * It renders header and gameBoard separately
+ */
+function initGame() {
     addEventListener('load', () => {
-        const header = document.getElementsByTagName('header');
-        header[0].innerHTML = loadHeader();
+        const header = document.getElementById('header') as HTMLElement;
+        header.innerHTML = loadHeader();
         const gameBoard = document.getElementById('board') as HTMLElement;
         gameBoard.innerHTML = loadBoard();
-        
-        
     })    
 }

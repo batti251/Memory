@@ -16,13 +16,70 @@
       width: min(40px, 20%);
     }
   }
-  &--start-game{
+  &--start-game {
     background-color: #f0ea6e;
     @include font($ff: "RedRose");
     @include size($w: min(100px, 50%));
     > img {
       aspect-ratio: 1 / 1;
       width: min(40px, 20%);
+    }
+  }
+
+  &__exit {
+    @include size($w: min(170px, 50%));
+    padding: 0.5%;
+
+    &--text {
+      @include respond(m) {
+        display: none;
+      }
+    }
+
+    &--code {
+      background-color: #86e9d633;
+      border: 1px solid #4dd5bc;
+      @include font($ff: "RedRose", $c: white, $fw: 700);
+      &::before {
+        content: url("/src/public/icons/exit.svg");
+        position: relative;
+        top: 3px;
+      }
+    }
+
+    &--game {
+      background-color: #5f5875;
+      border-radius: 10px;
+      border: 2px solid #e71c4f;
+      @include font($ff: "Orbitron", $c: white, $fw: 700);
+      &::before {
+        content: url("/src/public/icons/exit.svg");
+        position: relative;
+        top: 3px;
+      }
+    }
+
+    &--da {
+      background-color: #bfe5f2;
+      border-radius: 10px;
+      @include font($ff: "Figtree", $c: #1e7594, $fw: 700);
+      &::before {
+        content: url("/src/public/icons/exit_blue.svg");
+        position: relative;
+        top: 3px;
+      }
+    }
+
+    &--food {
+      background-color: #fff9f2;
+      border: 3px solid #f3832d;
+      border-radius: 10px;
+      @include font($ff: "DeliusUnicase", $c: #f3832d, $fw: 700);
+      &::before {
+        content: url("/src/public/icons/exit_orange.svg");
+        position: relative;
+        top: 3px;
+      }
     }
   }
 }

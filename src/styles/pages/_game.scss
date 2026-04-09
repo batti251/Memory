@@ -1,0 +1,116 @@
+@use "./../abstracts/" as *;
+
+#header{
+  padding: 4%;
+   
+    &:has(.game__header--code){
+    background-color: #303131;
+  }
+  &:has(.game__header--game){
+    background-color: #294F60;
+  }
+}
+.game__header {
+  @include dFlex($fd: unset, $jc: space-between);
+  padding: 0 2%;
+  height: 72px;
+  @include respond(m){
+    flex-direction: column-reverse;
+    height: 160px;
+    padding: 2% 0;
+  }
+
+  &--code{
+    background-color: #303131;
+    @include font($ff: RedRose, $fw: 700);
+  }
+
+  &--game{
+    background-color: #535D75;
+    @include font($ff: Orbitron, $fw: 700);
+  }
+
+  &--da{
+    background-color: #F0F3F4;
+    @include font($ff: Figtree, $fw: 700);
+  }
+
+  &--food{
+    background-color: #F0E5D9;
+    @include font($ff: DeliusUnicase, $fw: 700);
+  }
+}
+
+.player__count {
+  @include dFlex($fd: unset, $jc: unset, $g: 8px);
+  padding: 4px 8px;
+
+  &--code {
+    background-color: #86e9d633;
+  }
+
+  &--game,&--da,&--food {
+    @include dFlex($fd: unset, $jc: unset, $g: 16px);
+    background-color: white;
+    border-radius: 10px;
+    width: min(132px, 70%);
+  }
+
+  &--blue {
+    color: #2bb1ff
+  }
+
+  &--orange {
+    color: #f58e39;
+  }
+}
+
+#player_blue {
+  color: blue;
+
+  &_count {
+    color: blue;
+  }
+}
+
+.player__color {
+  display: none;
+}
+
+.player__count--code .player__color {
+  display: flex;
+}
+
+.player__counter {
+}
+
+.player__turn {
+    @include dFlex($fd: unset, $g: 8px);
+  &--code {
+    @include font($ff: RedRose, $c: white, $fw: 700);
+  }
+  &--game{
+    @include font($ff: Orbitron, $c: white, $fw: 700);
+  }
+  &--da{
+    @include font($ff: Figtree, $c: #1E7594, $fw: 700);
+  }
+}
+
+#board{
+  height: 90%;
+
+}
+
+.board{
+  height: 100%;
+  &__code{
+    background-color: #303131;
+  }
+  &__game{
+    background-color: #294F60;
+  }
+  &__da, __food{
+    background-color: white;
+  }
+}
