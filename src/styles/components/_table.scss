@@ -1,0 +1,33 @@
+@use "./../abstracts/" as *;
+
+.table {
+    @include dFlex();
+  &__code {
+    background-color: #303131;
+  }
+  &__game {
+    background-color: #294f60;
+  }
+  &__da,
+  &__food {
+    background-color: white;
+  }
+  &__row {
+    display: grid;
+    grid-template-rows: auto;
+    justify-content: center;
+    gap: 8px;
+    &--16 {
+      grid-template-columns: repeat(4, min(120px, 20%));
+    }
+
+    &--24,
+    &--36 {
+      grid-template-columns: repeat(6, 14%);
+      @include respond(m){
+        grid-template-columns: repeat(4, 20%);
+      }
+    }
+  }
+}
+

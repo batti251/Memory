@@ -67,8 +67,9 @@ initGame();
 function initGame() {
     addEventListener('load', () => {
         const header = document.getElementById('header') as HTMLElement;
-        header.innerHTML = loadHeader();
         const gameBoard = document.getElementById('board') as HTMLElement;
+        header.innerHTML = loadHeader();
         gameBoard.innerHTML = loadBoard();
+        
     })    
 }

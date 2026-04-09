@@ -6,7 +6,12 @@ $breakpoints: (
 );
 
 
-
+$cover: (
+  game: game,
+  code: code,
+  da: da,
+  food: food
+);
 
 
 @mixin buttton($bgc: $color-primary) {

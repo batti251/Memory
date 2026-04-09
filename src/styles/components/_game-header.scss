@@ -16,7 +16,7 @@
   height: 72px;
   @include respond(m){
     flex-direction: column-reverse;
-    height: 160px;
+    height: 120px;
     padding: 2% 0;
   }
 

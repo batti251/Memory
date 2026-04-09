@@ -41,11 +41,16 @@ export function loadHeader() {
 
 export function loadBoard() {
     return `
-    <div class="board board__${gameSetup[0]}">
-        <table>
-            <thead></thead>
-            <tbody></tbody>
+        <table class="table table__${gameSetup[2]} table__${gameSetup[0]}">
+            <tbody>
+                <tr id="table-row" class="table__row table__row--${gameSetup[2]}">
+                ${Array.from({ length: parseInt(gameSetup[2]) }, (_,i) => 
+                    `<td class="card card__${gameSetup[0]}">
+                <figure><img class="card__cover" src="/src/public/decks/theme_${gameSetup[0]}/cover_${gameSetup[0]}.svg"></figure></td>`
+                    ).join("")
+                }
+                </tr>
+            </tbody>
         </table>
-    </div>
     `
 }
