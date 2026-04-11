@@ -1,10 +1,12 @@
 
 init();
+uncoverCard();
 
-const gameSetupStorage: string = sessionStorage.getItem('memory');
+const gameSetupStorage: string | any = sessionStorage.getItem('memory');
 const gameSetup: string[] = JSON.parse(gameSetupStorage);
-const cardDeck:number = 18
+const cardDeck: number = 18
 let cards: number[] = [];
+let targets: HTMLImageElement[] = []
 
 
 const gameBoardSize: number = parseInt(gameSetup[2])
@@ -20,7 +22,7 @@ function init() {
             }
         }
         shuffle()
-      console.log(cards);
+        console.log(cards);
     })
 }
 
@@ -28,7 +30,7 @@ function init() {
  * adds random numbers, from ${@link randomNumberGen}, to cards-array
  */
 function randomArray() {
-    let number = randomNumberGen(); 
+    let number = randomNumberGen();
     let isNumberTaken = cards.includes(number);
     isNumberTaken ? randomArray() : cards.push(number, number);
 }
@@ -39,7 +41,7 @@ function randomArray() {
  * @returns - random number
  */
 function randomNumberGen() {
-    let randomNumber:number = Math.floor(Math.random() * cardDeck);
+    let randomNumber: number = Math.floor(Math.random() * cardDeck);
     return randomNumber;
 }
 
@@ -89,16 +91,95 @@ export function loadBoard() {
         <table class="table table__${gameSetup[2]} table__${gameSetup[0]}">
             <tbody>
                 <tr id="table-row" class="table__row table__row--${gameSetup[2]}">
-                ${cards.map(c => { return `
+                ${cards.map(c => {
+        return `
                      <td class="card card__${gameSetup[0]}">
                         <figure>
-                            <img data-value="${c}" class="card__cover" src="/src/public/decks/theme_${gameSetup[0]}/cover_${gameSetup[0]}.svg">
+                            <img data-value="${c}" data-select="false" class="card__cover" src="/src/public/decks/theme_${gameSetup[0]}/cover_${gameSetup[0]}.svg">
                         </figure>
                     </td>`
-                }).join("")
+    }).join("")
         }
                 </tr>
             </tbody>
         </table>
     `
+}
+
+/**
+ * listener to clicked elements
+ * fires only, when card__cover-elements are clicked
+ * clicking the same element again, will have no further effect
+ */
+function uncoverCard() {
+    addEventListener('click', (e) => {
+        let target = e.target as HTMLImageElement
+        let clickedTarget = [...target.classList];
+        
+        if (clickedTarget.includes("card__cover") && !clickedTarget.includes("flip")) {
+            targets.length == 2 ? targets = [] : "";
+            flipCard(target);
+        }
+    })
+}
+
+/**
+ * flips the covered Card and shows the current cards image
+ * @param target - the clicked img-element
+ */
+ function flipCard(target: HTMLImageElement) {
+    target.classList.add('flip');
+    revealCard(target)
+    targets.push(target);
+    targets.length == 2 ? compareCards(targets) : "";
+   
+}
+
+/**
+ * adds the img-source to the targets element
+ * @param target - the clicked img-element
+ */
+function revealCard(target: HTMLImageElement) {
+    setTimeout(() => {
+    target.src = `/src/public/decks/theme_${gameSetup[0]}/cards/card_${target.dataset.value}.svg`
+    }, 500);
+}
+
+
+/**
+ * Compares elements-value, when targets array is filled by 2 items during ${@link flipCard}
+ * Depending on the comparison a next function is called: 
+ * true:  calls ${@link foundPair}
+ * false: calls ${@link coverCards}
+ * @param targets - array with clicked elements
+ */
+function compareCards(targets:HTMLImageElement[]) {
+    setTimeout(() => {
+            targets[0].dataset.value == targets[1].dataset.value ? foundPair(targets) : coverCards(targets);
+    }, 1000);
+}
+
+
+/**
+ * Hookup Function from ${@link compareCards}
+ * It marks the elements as selected
+ * @param targets - array with clicked elements
+ */
+function foundPair(targets:HTMLImageElement[]) {
+    targets.forEach(t => {
+        t.dataset.select = "true";
+        t.classList.remove('flip');
+    });
+}
+
+/**
+ * Hookup Function from ${@link compareCards}
+ * It re-cover the selected cards
+ * @param targets - array with clicked elements
+ */
+function coverCards(targets:HTMLImageElement[]) {
+    targets.forEach(t => {
+        t.classList.remove('flip');
+        t.src = `/src/public/decks/theme_${gameSetup[0]}/cover_${gameSetup[0]}.svg`
+    });
 }
