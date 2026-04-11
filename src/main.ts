@@ -1,6 +1,8 @@
 import './styles/main.scss';
 import { loadHeader } from './templates/game';
 import { loadBoard } from './templates/game';
+import { playersFirstTurn } from './templates/game';
+import { playersCount } from './templates/game';
 
 let gameSettings: string[] = [];
 let gameSettingsPicked: string[] = [];
@@ -68,10 +70,13 @@ function initGame() {
     addEventListener('load', () => {
         const header = document.getElementById('header') as HTMLElement;
         const gameBoard = document.getElementById('board') as HTMLElement;
+        playersFirstTurn();
         header.innerHTML = loadHeader();
         gameBoard.innerHTML = loadBoard();
                 
-     
+        playersCount()
         
     })    
 }
+
+
