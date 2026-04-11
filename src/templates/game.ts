@@ -152,8 +152,7 @@ function uncoverCard() {
     addEventListener('click', (e) => {
         let target = e.target as HTMLImageElement
         let clickedTarget = [...target.classList];
-        let currentPlayer = document.getElementById(`current-player`)
-        if (clickedTarget.includes("card__cover") && !clickedTarget.includes("flip")) {
+        if (clickedTarget.includes("card__cover") && target.dataset.select == "false") {
             targets.length == 2 ? targets = [] : "";
             flipCard(target);
         }
