@@ -1,14 +1,59 @@
 
 init();
 
-    const gameSetupStorage: string = sessionStorage.getItem('memory');
-    const gameSetup:string[] = JSON.parse(gameSetupStorage);
-    
+const gameSetupStorage: string = sessionStorage.getItem('memory');
+const gameSetup: string[] = JSON.parse(gameSetupStorage);
+const cardDeck:number = 18
+let cards: number[] = [];
 
+
+const gameBoardSize: number = parseInt(gameSetup[2])
 function init() {
     addEventListener('load', (event) => {
+        if (gameSetup) {
+            cards = []
+            const gamePairs: number = gameBoardSize / 2
+            let x = 0
+            while (x < gamePairs) {
+                randomArray()
+                x++
+            }
+        }
+        shuffle()
+      console.log(cards);
     })
-    
+}
+
+/**
+ * adds random numbers, from ${@link randomNumberGen}, to cards-array
+ */
+function randomArray() {
+    let number = randomNumberGen(); 
+    let isNumberTaken = cards.includes(number);
+    isNumberTaken ? randomArray() : cards.push(number, number);
+}
+
+/**
+ * random number generator, according to the defined cardDeck
+ * 
+ * @returns - random number
+ */
+function randomNumberGen() {
+    let randomNumber:number = Math.floor(Math.random() * cardDeck);
+    return randomNumber;
+}
+
+/**
+ * shuffles the generated cards-Array randomly, from ${@link randomArray}
+ */
+function shuffle() {
+    let i = cards.length, j, temp;
+    while (--i > 0) {
+        j = Math.floor(Math.random() * (i + 1));
+        temp = cards[j];
+        cards[j] = cards[i];
+        cards[i] = temp;
+    }
 }
 
 
@@ -44,11 +89,14 @@ export function loadBoard() {
         <table class="table table__${gameSetup[2]} table__${gameSetup[0]}">
             <tbody>
                 <tr id="table-row" class="table__row table__row--${gameSetup[2]}">
-                ${Array.from({ length: parseInt(gameSetup[2]) }, (_,i) => 
-                    `<td class="card card__${gameSetup[0]}">
-                <figure><img class="card__cover" src="/src/public/decks/theme_${gameSetup[0]}/cover_${gameSetup[0]}.svg"></figure></td>`
-                    ).join("")
-                }
+                ${cards.map(c => { return `
+                     <td class="card card__${gameSetup[0]}">
+                        <figure>
+                            <img data-value="${c}" class="card__cover" src="/src/public/decks/theme_${gameSetup[0]}/cover_${gameSetup[0]}.svg">
+                        </figure>
+                    </td>`
+                }).join("")
+        }
                 </tr>
             </tbody>
         </table>

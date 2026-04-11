@@ -70,6 +70,8 @@ function initGame() {
         const gameBoard = document.getElementById('board') as HTMLElement;
         header.innerHTML = loadHeader();
         gameBoard.innerHTML = loadBoard();
+                
+     
         
     })    
 }
