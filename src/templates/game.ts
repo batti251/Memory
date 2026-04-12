@@ -7,6 +7,14 @@ const gameSetup: string[] = JSON.parse(gameSetupStorage);
 const cardDeck: number = 18
 let cards: number[] = [];
 let targets: HTMLImageElement[] = []
+let winner:string = "";
+let globalCount: {
+    blue: number,
+    orange: number
+} = {
+    blue: 0,
+    orange: 0
+}
 
 let players: {
     player1: {
@@ -218,6 +226,7 @@ function increasePlayerCount() {
         if (player.color == currentPlayer?.dataset.turn) {
             player.count++
             counterRef.innerHTML = player.count.toString();
+            globalCount[player.color] = player.count
         }
     })
 }
@@ -255,8 +264,13 @@ function gameEnd() {
     let dialog = document.getElementById('game-over') as HTMLElement;
     const leftoverCards = document.querySelectorAll('[data-select="false"]')
     if (leftoverCards.length == 0) {
+        globalCount.blue > globalCount.orange ? winner = "blue" : winner = "orange"
         dialog.classList.add('dialog');
         dialog.innerHTML = loadEndResult()
+        setTimeout(() => {
+            dialog.innerHTML = loadWinningScreen()
+            
+        }, 1500);
     }
 }
 
@@ -279,6 +293,19 @@ function loadEndResult() {
             </div>
             
         </div>
+    </article>
+    `
+}
+
+export function loadWinningScreen() {
+    return `
+    <article class="dialog__${gameSetup[0]} dialog__${gameSetup[0]}--win">
+        <img class="confetti confetti--${gameSetup[0]}" src="/src/public/decks/theme_code/confetti.svg">
+        <span class="subtext subtext--${gameSetup[0]} ">The winner is</span>
+        <b class="player__counter winner winner__${winner} winner__${winner}--${gameSetup[0]} player__counter--${gameSetup[0]}">${winner.toUpperCase()} PLAYER</b>
+        <img class="winner__img" src="/src/public/decks/theme_${gameSetup[0]}/img_win_${winner}.svg">
+
+        <a href="/src/pages/settings.html" class="btn btn__exit btn__exit--${gameSetup[0]} btn__home btn__home--${gameSetup[0]}"><span class="btn__exit--text"></span></a>
     </article>
     `
 }

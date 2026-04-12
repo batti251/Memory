@@ -76,8 +76,8 @@ function initGame() {
             playersFirstTurn();
             header.innerHTML = loadHeader();
             gameBoard.innerHTML = loadBoard();
-
             playersCount()
+
         }
 
 

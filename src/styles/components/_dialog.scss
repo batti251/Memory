@@ -51,6 +51,9 @@
     background-color: #f3832d;
     @include dFlex($g: 16px);
     @include size($w: 100%, $h: 100%);
+    &--win{
+      background-color: white;
+    }
   }
 }
 
@@ -74,6 +77,43 @@ b.player__counter {
   }
 }
 
+.winner {
+  @include font($fw: 600, $c: unset, $fs: clamp(1.75rem, 4rem, 8vw) !important);
+  &__blue {
+    color: #2bb1ff !important;
+    &--da {
+      color: white !important;
+    }
+    &--food{
+      color: #A45212 !important;
+      font-family: KleeOne !important;
+    }
+    &--game{
+      color: #2298DB !important;
+      text-shadow: 4px 4px 4px #00000040;
+    }
+  }
+  &__orange {
+    color: #F58E39 !important;
+    &--da {
+      color: white !important;
+    }
+    &--food{
+      color: #A45212 !important;
+      font-weight: 600 !important;
+      font-family: KleeOne !important;
+    }
+    &--game{
+      color: #EA6900 !important;
+      text-shadow: 4px 4px 4px #00000040;
+    }
+  }
+  &__img{
+        width: min(200px, 40%);
+    height: auto;
+  }
+}
+
 .subtext {
   @include font($c: white, $fs: clamp(1.175rem, 2rem, 2vw), $lh: 100%);
   &-da {
@@ -86,7 +126,8 @@ b.player__counter {
   &--code {
     font-family: RedRose;
   }
-  &-food {
+  &--food {
     font-family: KleeOne;
+    color: #A45212;
   }
 }

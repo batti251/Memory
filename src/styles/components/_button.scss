@@ -82,4 +82,20 @@
       }
     }
   }
+
+  &__home {
+    padding: 1%;
+    &::before {
+      content: "Home";
+      position: unset;
+    }
+    &--code::before{
+      content: "Back to start";
+    }
+    &--food{
+      color: white;
+      background-color: #F3832D;
+      box-shadow: 3px 3px 5px #00000033;
+    }
+  }
 }

@@ -28,3 +28,17 @@ input[type=radio]{
 figure{
   margin-inline: 0;
 }
+
+a {
+  text-decoration: none;
+  &:hover{
+    filter: brightness(1.2);
+  }
+}
+
+button {
+  &:hover{
+    filter: brightness(1.2);
+    cursor: pointer;
+  }
+}
