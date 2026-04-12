@@ -3,10 +3,15 @@
 
 .card{
     width: 100%;
-
-
     &__cover{
         width: 100%;
         height: auto;
+
+        &:hover{
+            transform: scale(1.1);
+            transition: 500ms;
+            cursor: pointer;
+            filter: drop-shadow(0 0 4px #00000060);
+        }
     }
 }

@@ -11,7 +11,7 @@
   &:has(#theme-2:checked) #img-preview {
     background-image: url("./../../public/decks/theme_game/preview_game.svg");
   }
-  &:has(#theme-3:checked) #img-preview {
+  &:has(#theme-3:checked) #img-preview { 
     background-image: url("./../../public/decks/theme_da/preview_da.svg");
   }
   &:has(#theme-4:checked) #img-preview {
@@ -22,8 +22,6 @@
     justify-content: center;
   }
 }
-
-$themes: "da", "food", "code", "game";
 
 .settings {
   &__wrap {

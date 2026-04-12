@@ -118,9 +118,9 @@ export function loadHeader() {
 
 export function loadBoard() {
     return `
-        <table class="table table__${gameSetup[2]} table__${gameSetup[0]}">
+        <table class="board board__${gameSetup[2]} board__${gameSetup[0]}">
             <tbody>
-                <tr id="table-row" class="table__row table__row--${gameSetup[2]}">
+                <tr class="board__row board__row--${gameSetup[2]}">
                 ${cards.map(c => {
         return `
                      <td class="card card__${gameSetup[0]}">

@@ -1,72 +1,99 @@
 @use "./../abstracts/" as *;
 
 .settings {
-    margin: 0 0 6% 0 ;
-    &__headlines{
-        &-h1{
-            @include font($c: #303131, $fw: 700, $fs: clamp(3em, 4rem, 7vw), $lh: 100%, $ff: "RedRose");
-        }
-        &-h2{
-            @include font($c: #303131, $fw: 700, $fs: clamp(1.75rem, 2.25rem, 3vw), $lh: 100%, $ff: "Almarai");
-        }
-         &--game{
-        @include dFlex($fd: unset, $jc: unset, $g: 8px);
-
-        &:before{
-            content: url('./../../public/icons/color-palette.svg');
-            width: 20px;
-            height: 30px;
-        }
-        }
-         &--player{
-        @include dFlex($fd: unset, $jc: unset, $g: 8px);
-
-        &:before{
-            content: url('./../../public/icons/chess_pawn.svg');
-            width: 20px;
-            height: 30px;
-        }
-        }
-        &--board{
-        @include dFlex($fd: unset, $jc: unset, $g: 8px);
-
-        &:before{
-            content: url('./../../public/icons/card_board.svg');
-            width: 20px;
-            height: 30px;
-        }
-        }
+  margin: 0 0 6% 0;
+  &__headlines {
+     &:before {
+        @include size($w:20px, $h: 30px);
+      }
+    &-h1 {
+      @include font(
+        $c: #303131,
+        $fw: 700,
+        $fs: clamp(3em, 4rem, 7vw),
+        $lh: 100%,
+        $ff: "RedRose"
+      );
     }
+    &-h2 {
+      @include font(
+        $c: #303131,
+        $fw: 700,
+        $fs: clamp(1.75rem, 2.25rem, 3vw),
+        $lh: 100%,
+        $ff: "Almarai"
+      );
+    }
+    &--game {
+      @include dFlex($fd: unset, $jc: unset, $g: 8px);
+      &:before {
+        content: url("./../../public/icons/color-palette.svg");
+      }
+    }
+    &--player {
+      @include dFlex($fd: unset, $jc: unset, $g: 8px);
+      &:before {
+        content: url("./../../public/icons/chess_pawn.svg");
+      }
+    }
+    &--board {
+      @include dFlex($fd: unset, $jc: unset, $g: 8px);
+      &:before {
+        content: url("./../../public/icons/card_board.svg");
+      }
+    }
+  }
   &__radio {
-      @include dFlex($ai: unset, $g: 16px);
-       margin: 0 0 24px 0;
-
+    @include dFlex($ai: unset, $g: 16px);
+    margin: 0 0 24px 0;
   }
 
   &__inputs {
     @include dFlex($ai: unset, $jc: unset, $g: 8px);
 
     &-radio {
-    @include dFlex($jc: unset, $fd: unset, $g: 8px);
-    width: 400px;
-    height: 100%;
-      @include font($c: #303131,  $fs: clamp(1.125rem, 2rem, 2vw),$ff: "Almarai");
-          @include respond(m){
+      @include dFlex($jc: unset, $fd: unset, $g: 8px);
+      @include size($w: 400px, $h: 100%);
+      @include font(
+        $c: #303131,
+        $fs: clamp(1.125rem, 2rem, 2vw),
+        $ff: "Almarai"
+      );
+      @include respond(m) {
         width: 100%;
+      }
     }
-    }
-
   }
 }
 
-input[type=radio]:checked + label {
-    font-weight: 700;
-    &::after{
-        content: url('./../../public/icons/line_wand.svg');
+.label {
+    @include dFlex($fd: unset, $g: 8px);
+    height: 24px;
+    line-height: 100%;
+  &--radio {
+    &:hover {
+      cursor: pointer;
+     span {
+        font-weight: 700;
+
+     }
+      span::after {
+        content: url("./../../public/icons/line_wand.svg");
+        filter: grayscale(0.5);
         position: relative;
         top: 3px;
         left: 4px;
+      }
     }
+    :checked + span {
+      font-weight: 700;
+      &::after {
+        content: url("./../../public/icons/line_wand.svg");
+        filter: grayscale(0) !important;
+        position: relative;
+        top: 3px;
+        left: 4px;
+      }
+    }
+  }
 }
-
-
