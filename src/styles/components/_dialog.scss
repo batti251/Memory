@@ -1,0 +1,92 @@
+@use "./../abstracts/" as *;
+
+.dialog {
+  @include dFlex($g: 16px);
+  @include size($w: 100%, $h: 100%);
+  position: absolute;
+  top: 0;
+  border: unset;
+
+  &__game-over {
+    @include font($fs: clamp(2rem, 9rem, 16vw), $fw: 800);
+    &--da {
+      font-family: Figtree;
+      color: #fd5b4f;
+      text-shadow: 0 4px 4px #00000040;
+    }
+    &--game {
+      font-family: Orbitron;
+      color: #ed1b76;
+    }
+    &--code {
+      font-family: RedRose;
+      color: #4dd5bc;
+      text-shadow: -7px 0 8px #4dd5bc80;
+    }
+    &--food {
+      font-family: KleeOne;
+      color: #ffffff;
+    }
+  }
+
+  &__code {
+    background-color: #303131;
+    @include dFlex($g: 16px);
+    @include size($w: 100%, $h: 100%);
+  }
+
+  &__game {
+    background-color: #294f60;
+    @include dFlex($g: 16px);
+    @include size($w: 100%, $h: 100%);
+  }
+
+  &__da {
+    background-color: #1e7594;
+    @include dFlex($g: 16px);
+    @include size($w: 100%, $h: 100%);
+  }
+
+  &__food {
+    background-color: #f3832d;
+    @include dFlex($g: 16px);
+    @include size($w: 100%, $h: 100%);
+  }
+}
+
+b.player__counter {
+  @include font($c: unset, $fs: clamp(1.5rem, 2rem, 3vw), $fw: 700, $lh: 100%);
+  &--da {
+    font-family: Figtree;
+    font-size: clamp(1.5rem, 2rem, 2vw);
+  }
+  &--game {
+    font-family: Orbitron;
+    font-size: clamp(1.5rem, 2rem, 2vw);
+  }
+  &--code {
+    font-family: RedRose;
+    font-size: clamp(1.5rem, 2rem, 2vw);
+  }
+  &--food {
+    font-family: RedRose;
+    font-size: clamp(1.5rem, 2rem, 2vw);
+  }
+}
+
+.subtext {
+  @include font($c: white, $fs: clamp(1.175rem, 2rem, 2vw), $lh: 100%);
+  &-da {
+    font-family: Figtree;
+    font-weight: 500;
+  }
+  &--game {
+    font-family: Orbitron;
+  }
+  &--code {
+    font-family: RedRose;
+  }
+  &-food {
+    font-family: KleeOne;
+  }
+}

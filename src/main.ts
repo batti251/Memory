@@ -14,17 +14,17 @@ checkGameRequirements()
  * Creates gameSetting-Array according to unique inputField-names
  */
 function checkGameRequirements() {
-  const btn = document.getElementById('btn-start')
-  btn?.addEventListener('click', () => {
-      const inputFieldRefs = document.querySelectorAll('input')
-      inputFieldRefs.forEach(e => {
-        if (!gameSettings.includes(e.name)) {
-            gameSettings.push(e.name)
-        }
-      })
+    const btn = document.getElementById('btn-start')
+    btn?.addEventListener('click', () => {
+        const inputFieldRefs = document.querySelectorAll('input')
+        inputFieldRefs.forEach(e => {
+            if (!gameSettings.includes(e.name)) {
+                gameSettings.push(e.name)
+            }
+        })
         collectGameSettings()
-  })
-  
+    })
+
 }
 
 /**
@@ -33,10 +33,11 @@ function checkGameRequirements() {
  */
 function collectGameSettings() {
     gameSettingsPicked = [];
-    gameSettings.forEach(e  => {
+    gameSettings.forEach(e => {
         let radios = document.getElementsByName(e);
-      [...radios].forEach((e) => (addGameSetting(e as HTMLInputElement))
-    )})
+        [...radios].forEach((e) => (addGameSetting(e as HTMLInputElement))
+        )
+    })
     gameStart()
 }
 
@@ -44,11 +45,11 @@ function collectGameSettings() {
  * Adds the Game-Setting to the gameSettingsPicked-Array 
  * @param e - the according Game-Setting
  */
-function addGameSetting(e:HTMLInputElement) {
-    if(e.checked && e.dataset.preview){
+function addGameSetting(e: HTMLInputElement) {
+    if (e.checked && e.dataset.preview) {
         gameSettingsPicked.push(e.dataset.preview)
         return
-    } 
+    }
 }
 
 /**
@@ -68,15 +69,20 @@ initGame();
  */
 function initGame() {
     addEventListener('load', () => {
+
         const header = document.getElementById('header') as HTMLElement;
         const gameBoard = document.getElementById('board') as HTMLElement;
-        playersFirstTurn();
-        header.innerHTML = loadHeader();
-        gameBoard.innerHTML = loadBoard();
-                
-        playersCount()
-        
-    })    
+        if (header && gameBoard) {
+            playersFirstTurn();
+            header.innerHTML = loadHeader();
+            gameBoard.innerHTML = loadBoard();
+
+            playersCount()
+        }
+
+
+
+    })
 }
 
 

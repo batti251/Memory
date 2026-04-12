@@ -29,10 +29,11 @@ let players: {
 }
 
 
-const gameBoardSize: number = parseInt(gameSetup[2])
+
 function init() {
     addEventListener('load', (event) => {
         if (gameSetup) {
+            const gameBoardSize: number = parseInt(gameSetup[2])
             cards = []
             const gamePairs: number = gameBoardSize / 2
             let x = 0
@@ -128,11 +129,12 @@ export function loadBoard() {
 }
 
 export function playersFirstTurn() {
-    players.player1.color = gameSetup[1]
-    players.player1.color == "blue" ? players.player2.color = "orange" : players.player2.color = "blue"
+    if (gameSetup) {
+        players.player1.color = gameSetup[1]
+        players.player1.color == "blue" ? players.player2.color = "orange" : players.player2.color = "blue"
 
-    console.log(players.player1.color);
-    console.log(players.player2.color);
+    }
+
 
 }
 
@@ -231,6 +233,8 @@ function foundPair(targets: HTMLImageElement[]) {
         t.dataset.select = "true";
         t.classList.remove('flip');
     });
+    gameEnd();
+
 }
 
 /**
@@ -243,4 +247,38 @@ function coverCards(targets: HTMLImageElement[]) {
         t.classList.remove('flip');
         t.src = `/src/public/decks/theme_${gameSetup[0]}/cover_${gameSetup[0]}.svg`
     });
+}
+
+
+
+function gameEnd() {
+    let dialog = document.getElementById('game-over') as HTMLElement;
+    const leftoverCards = document.querySelectorAll('[data-select="false"]')
+    if (leftoverCards.length == 0) {
+        dialog.classList.add('dialog');
+        dialog.innerHTML = loadEndResult()
+    }
+}
+
+function loadEndResult() {
+    return `
+    <article class="dialog__${gameSetup[0]}">
+        <h2 class="dialog__game-over dialog__game-over--${gameSetup[0]}">Game over</h2>
+        <span class="subtext subtext--${gameSetup[0]}">Final Score</span>
+                <div class="player__count player__count--${gameSetup[0]}">
+        <div class="player__count player__count--${players.player1.color}">
+            <img id="player-${players.player1.color}" src="/src/public/decks/theme_${gameSetup[0]}/player_${players.player1.color}_${gameSetup[0]}.svg" alt="players_icon">
+            <span class="player__color player__color--${gameSetup[0]}">${players.player1.color.charAt(0).toUpperCase()+ players.player1.color.slice(1)}</span>    
+            <b id="count_player-${players.player1.color}" class="player__counter player__counter--${players.player1.color} player__counter--${gameSetup[0]}">${players.player1.count}</b>
+            </div>
+            
+        <div class="player__count count player__count--${players.player2.color}">
+            <img id="player-${players.player2.color}" src="/src/public/decks/theme_${gameSetup[0]}/player_${players.player2.color}_${gameSetup[0]}.svg" alt="players_icon">
+            <span class="player__color player__color--${gameSetup[0]}">${players.player2.color.charAt(0).toUpperCase()+ players.player2.color.slice(1)}</span>    
+            <b id="count_player-${players.player2.color}" class="player__counter player__counter--${players.player2.color} player__counter--${gameSetup[0]}">${players.player2.count}</b>
+            </div>
+            
+        </div>
+    </article>
+    `
 }

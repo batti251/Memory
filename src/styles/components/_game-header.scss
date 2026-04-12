@@ -22,22 +22,22 @@
 
   &--code{
     background-color: #303131;
-    @include font($ff: RedRose, $fw: 700);
+    @include font($ff: RedRose, $fw: 700, $fs: clamp(1.125rem, 1.75rem, 2vw));
   }
 
   &--game{
     background-color: #535D75;
-    @include font($ff: Orbitron, $fw: 700);
+    @include font($ff: Orbitron, $fw: 700, $fs: clamp(1.125rem, 1.75rem, 2vw));
   }
 
   &--da{
     background-color: #F0F3F4;
-    @include font($ff: Figtree, $fw: 700);
+    @include font($ff: Figtree, $fw: 700, $fs: clamp(1.125rem, 1.75rem, 2vw));
   }
 
   &--food{
     background-color: #F0E5D9;
-    @include font($ff: DeliusUnicase, $fw: 700);
+    @include font($ff: DeliusUnicase, $fw: 700, $fs: clamp(1.125rem, 1.75rem, 2vw));
   }
 }
 
@@ -50,10 +50,10 @@
   }
 
   &--game,&--da,&--food {
-    @include dFlex($fd: unset, $jc: unset, $g: 16px);
+    @include dFlex($fd: unset, $jc: center, $g: 16px);
     background-color: white;
     border-radius: 10px;
-    width: min(132px, 70%);
+    width: min(150px, 70%);
   }
 
   &--blue {
@@ -75,6 +75,12 @@
 
 .player__color {
   display: none;
+  font-weight: 700;
+  font-size: clamp(1.125rem, 2rem, 2vw);
+  &--code{
+    font-family: RedRose;
+  }
+
 }
 
 .player__count--code .player__color {
