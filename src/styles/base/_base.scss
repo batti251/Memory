@@ -40,4 +40,11 @@ button {
     filter: brightness(1.2);
     cursor: pointer;
   }
+  &:disabled{
+    filter: grayscale(0.8);
+    color: gray
+  }
+  &:disabled,:hover{
+    cursor: default;
+  }
 }

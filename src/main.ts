@@ -6,6 +6,7 @@ import { playersCount } from './templates/game';
 
 let gameSettings: string[] = [];
 let gameSettingsPicked: string[] = [];
+let btn = document.getElementById('btn-start') as HTMLButtonElement;
 
 checkGameRequirements()
 
@@ -14,16 +15,16 @@ checkGameRequirements()
  * Creates gameSetting-Array according to unique inputField-names
  */
 function checkGameRequirements() {
-    const btn = document.getElementById('btn-start')
-    btn?.addEventListener('click', () => {
-        const inputFieldRefs = document.querySelectorAll('input')
+    const inputFieldRefs = document.querySelectorAll('input')
+    btn ?  btn.disabled = true : "";
+    inputFieldRefs.forEach(e => e.addEventListener('click', () => {
         inputFieldRefs.forEach(e => {
             if (!gameSettings.includes(e.name)) {
                 gameSettings.push(e.name)
             }
         })
         collectGameSettings()
-    })
+    }))
 
 }
 
@@ -38,7 +39,7 @@ function collectGameSettings() {
         [...radios].forEach((e) => (addGameSetting(e as HTMLInputElement))
         )
     })
-    gameStart()
+    enableBtn()
 }
 
 /**
@@ -53,13 +54,25 @@ function addGameSetting(e: HTMLInputElement) {
 }
 
 /**
- * If all required game-settings are collected, it will store it into session storage 
+ * If all required game-settings are collected, the start button will be enabled
  */
-function gameStart() {
+function enableBtn() {
     if (gameSettingsPicked.length >= 3) {
+        btn.disabled = false;
+        startGame()
+    }
+}
+
+/**
+ * Starts the game, if the start-button is enabled
+ */
+function startGame() {
+    btn.addEventListener('click', () => {
+        if (!btn.disabled) {
         window.open('game.html', '_self')
         sessionStorage.setItem('memory', JSON.stringify(gameSettingsPicked));
-    }
+        }
+    })
 }
 
 initGame();
@@ -69,7 +82,6 @@ initGame();
  */
 function initGame() {
     addEventListener('load', () => {
-
         const header = document.getElementById('header') as HTMLElement;
         const gameBoard = document.getElementById('board') as HTMLElement;
         if (header && gameBoard) {
@@ -77,12 +89,52 @@ function initGame() {
             header.innerHTML = loadHeader();
             gameBoard.innerHTML = loadBoard();
             playersCount()
-
         }
-
-
-
     })
+}
+
+
+settingsListener();
+
+/**
+ * Function handler, according to the inputs-target-name
+ * Calls updateFunction, with predefined strings, for DOM-manipulation
+ */
+function settingsListener() {
+    addEventListener('change', (e) => {
+        switch ((e.target as HTMLInputElement).getAttribute("name")) {
+            case "game-theme":
+                updateSettingBar((e.target) as HTMLInputElement, 0, "theme", "");
+                break;
+            case "player-color":
+                updateSettingBar((e.target) as HTMLInputElement, 1, "Player", "");
+                break;
+            default: updateSettingBar((e.target) as HTMLInputElement, 2, "Cards", "Board-");
+                break;
+        }
+    })
+}
+
+/**
+ * Changes the preselect game settings in the setting-bar
+ * @param e - the events input-target
+ * @param i - index from the setting-bar (0: theme, 1: first playerm 2: board size)
+ * @param s - word-suffix
+ * @param p - prefix-word 
+ */
+function updateSettingBar(e:HTMLInputElement, i:number, s:string, p:string) {
+    const settingsBarRef = document.querySelectorAll('.settings__bar-list')
+    const settingsBar = settingsBarRef[0].children[i] as HTMLElement;
+    const gameTheme = e.dataset.preview as string;
+    settingsBar.dataset.picked = "false";
+    if (gameTheme == "da") {
+        settingsBar.innerHTML = gameTheme.toUpperCase() + " " + s
+         settingsBar.dataset.picked = "true";
+    } else {
+        settingsBar.innerHTML = p + gameTheme.charAt(0).toUpperCase() + gameTheme.slice(1) + " " + s
+     settingsBar.dataset.picked = "true";
+    }
+
 }
 
 

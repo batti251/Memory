@@ -1,21 +1,56 @@
 @use "../abstracts/" as *;
 
 .settings__bar {
-  @include dFlex($fd: unset, $g: 16px);
-  width: 100%;
+  @include dFlex($fd: unset, $jc: space-evenly, $g: 16px);
+  @include size($w: 100%, $h: 80px);
+  padding: 0 8px;
   background-color: #f6f6f6;
   &-list {
-    @include dFlex($fd: unset, $g: 8px);
+    @include dFlex($fd: unset);
     @include font();
 
     &-point {
-        @include dFlex($fd: unset);
+      @include dFlex($fd: unset, $jc: start, $g: 8px);
+      &:first-child {
+        width: 110px;
+      }
+      width: 160px;
       &::marker {
         content: "";
       }
-      &:nth-child(n+2):before{
-        content: url('./../../public/icons/line_stroke.svg');
+      &:nth-child(n + 2):before {
+        content: "";
+        background-image: url("./../../public/icons/line_stroke.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 32px;
+        height: 54px;
+      }
+      &:nth-child(n + 2)[data-picked="true"]:before {
+        content: "";
+        background-image: url("./../../public/icons/line_wand_45deg.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 28px;
+        height: 54px;
       }
     }
+
+
+
+    @include respond(m){
+    flex-direction: column;
+    gap: 8px;
+  }
+  }
+
+@include respond(m){
+    height: 100%;
+    width: min(160px, 90%); 
+    padding: 8px;
+  }
+  
+  @include respond(m){
+    flex-direction: column;
   }
 }

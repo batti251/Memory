@@ -27,19 +27,24 @@
   &__wrap {
     @include dFlex($jc: space-between, $ai: start, $g: 8px, $fd: unset);
     height: 100%;
-    @include respond(m) {
+    @include respond(l) {
       flex-direction: column;
     }
+    
   }
   &__preview {
     @include dFlex($ai: end, $g: 24px);
-    @include size($w: min(480px, 80%));
+    @include size($w: min(620px, 80%));
+
+    @include respond(m){
+      align-items: center;
+    }
   }
 }
 
 #img-preview {
   aspect-ratio: 1 / 1;
-  width: 100%;
+  width: 80%;
   background-repeat: no-repeat;
   background-size: contain;
 }
