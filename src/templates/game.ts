@@ -7,7 +7,7 @@ const gameSetup: string[] = JSON.parse(gameSetupStorage);
 const cardDeck: number = 18
 let cards: number[] = [];
 let targets: HTMLImageElement[] = []
-let winner:string = "";
+let winner: string = "";
 let globalCount: {
     blue: number,
     orange: number
@@ -140,18 +140,9 @@ export function playersFirstTurn() {
     if (gameSetup) {
         players.player1.color = gameSetup[1]
         players.player1.color == "blue" ? players.player2.color = "orange" : players.player2.color = "blue"
-
     }
-
-
 }
 
-export function playersCount() {
-    let currentPlayer = document.getElementById(`count_player${gameSetup[1]}`)
-    console.log(currentPlayer);
-
-
-}
 
 /**
  * listener to clicked elements
@@ -242,7 +233,6 @@ function foundPair(targets: HTMLImageElement[]) {
         t.classList.remove('flip');
     });
     gameEnd();
-
 }
 
 /**
@@ -255,23 +245,50 @@ function coverCards(targets: HTMLImageElement[]) {
         t.classList.remove('flip');
         t.src = `/src/public/decks/theme_${gameSetup[0]}/cover_${gameSetup[0]}.svg`
     });
-        nextPlayer();
+    nextPlayer();
 }
 
 
-
+/**
+ * Handler to check, if the game has ended
+ * It ends, as soon as all matched cards are flipped 
+ */
 function gameEnd() {
     let dialog = document.getElementById('game-over') as HTMLElement;
     const leftoverCards = document.querySelectorAll('[data-select="false"]')
     if (leftoverCards.length == 0) {
-        globalCount.blue > globalCount.orange ? winner = "blue" : winner = "orange"
-        dialog.classList.add('dialog');
-        dialog.innerHTML = loadEndResult()
-        setTimeout(() => {
-            dialog.innerHTML = loadWinningScreen()
-            
-        }, 1500);
+        if (returnWinner()) {
+            dialog.classList.add('dialog');
+            dialog.innerHTML = loadEndResult()
+            setTimeout(() => {
+                dialog.innerHTML = loadWinningScreen()
+            }, 1500);
+        }
     }
+}
+
+/**
+ * Handler to evaluate the result
+ * @returns [true: a winner exists ; false: game-draw]
+ */
+function returnWinner():boolean {
+    if (globalCount.blue > globalCount.orange) {
+        winner = "blue"
+        return true
+    } else if (globalCount.blue < globalCount.orange) {
+        winner = "orange";
+        return true
+    } else {
+        restartGame();
+        return false
+    }
+}
+
+/**
+ * Handler, to trigger a rematch, when no winner exists from ${@link returnWinner()} 
+ */
+function restartGame() {
+    
 }
 
 function loadEndResult() {
@@ -282,13 +299,13 @@ function loadEndResult() {
                 <div class="player__count player__count--${gameSetup[0]}">
         <div class="player__count player__count--${players.player1.color}">
             <img id="player-${players.player1.color}" src="/src/public/decks/theme_${gameSetup[0]}/player_${players.player1.color}_${gameSetup[0]}.svg" alt="players_icon">
-            <span class="player__color player__color--${gameSetup[0]}">${players.player1.color.charAt(0).toUpperCase()+ players.player1.color.slice(1)}</span>    
+            <span class="player__color player__color--${gameSetup[0]}">${players.player1.color.charAt(0).toUpperCase() + players.player1.color.slice(1)}</span>    
             <b id="count_player-${players.player1.color}" class="player__counter player__counter--${players.player1.color} player__counter--${gameSetup[0]}">${players.player1.count}</b>
             </div>
             
         <div class="player__count count player__count--${players.player2.color}">
             <img id="player-${players.player2.color}" src="/src/public/decks/theme_${gameSetup[0]}/player_${players.player2.color}_${gameSetup[0]}.svg" alt="players_icon">
-            <span class="player__color player__color--${gameSetup[0]}">${players.player2.color.charAt(0).toUpperCase()+ players.player2.color.slice(1)}</span>    
+            <span class="player__color player__color--${gameSetup[0]}">${players.player2.color.charAt(0).toUpperCase() + players.player2.color.slice(1)}</span>    
             <b id="count_player-${players.player2.color}" class="player__counter player__counter--${players.player2.color} player__counter--${gameSetup[0]}">${players.player2.count}</b>
             </div>
             

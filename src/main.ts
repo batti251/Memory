@@ -2,7 +2,6 @@ import './styles/main.scss';
 import { loadHeader } from './templates/game';
 import { loadBoard } from './templates/game';
 import { playersFirstTurn } from './templates/game';
-import { playersCount } from './templates/game';
 
 let gameSettings: string[] = [];
 let gameSettingsPicked: string[] = [];
@@ -88,7 +87,6 @@ function initGame() {
             playersFirstTurn();
             header.innerHTML = loadHeader();
             gameBoard.innerHTML = loadBoard();
-            playersCount()
         }
     })
 }
