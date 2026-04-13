@@ -201,7 +201,6 @@ function revealCard(target: HTMLImageElement) {
 function compareCards(targets: HTMLImageElement[]) {
     setTimeout(() => {
         targets[0].dataset.value == targets[1].dataset.value ? foundPair(targets) : coverCards(targets);
-        nextPlayer();
     }, 1000);
 
 }
@@ -256,6 +255,7 @@ function coverCards(targets: HTMLImageElement[]) {
         t.classList.remove('flip');
         t.src = `/src/public/decks/theme_${gameSetup[0]}/cover_${gameSetup[0]}.svg`
     });
+        nextPlayer();
 }
 
 
