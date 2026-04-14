@@ -1,11 +1,9 @@
 import './styles/main.scss';
-import { loadHeader } from './templates/game';
-import { loadBoard } from './templates/game';
-import { playersFirstTurn } from './templates/game';
-import { exitGameBtn } from './templates/game';
+import { loadHeader, loadBoard } from './templates/template';
+import { playersFirstTurn, exitGameBtn } from './scripts/game';
 
 let gameSettings: string[] = [];
-let gameSettingsPicked: string[] = [];
+export let gameSettingsPicked: string[] = [];
 let btn = document.getElementById('btn-start') as HTMLButtonElement;
 
 checkGameRequirements()

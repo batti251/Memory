@@ -146,7 +146,7 @@ b.player__counter {
     }
 
     &--da {
-      @include font($ff: "Figtree", $c: #1e7594, $fw: 700, $fs:clamp(1.5rem, 3rem, 4vw));
+      @include font($ff: "Figtree", $c: white, $fw: 700, $fs:clamp(1.5rem, 3rem, 4vw));
       
     }
 
