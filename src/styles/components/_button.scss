@@ -89,13 +89,66 @@
       content: "Home";
       position: unset;
     }
-    &--code::before{
+    &--code::before {
       content: "Back to start";
     }
-    &--food{
+    &--food {
       color: white;
-      background-color: #F3832D;
+      background-color: #f3832d;
       box-shadow: 3px 3px 5px #00000033;
     }
   }
+
+  &__restart {
+        width: min(170px, 50%);
+    &:before {
+      padding: 4px 8px;
+      content: " Restart Game";
+      @include position($p: relative, $t: 50%, $l: 50%);
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    &--code {
+      background-color: #86e9d633;
+      border: 1px solid #4dd5bc;
+      @include font($ff: "RedRose", $c: white, $fw: 700);
+      &::before {
+      }
+    }
+
+    &--game {
+      background-color: #5f5875;
+      border-radius: 10px;
+      border: 2px solid #e71c4f;
+      @include font($ff: "Orbitron", $c: white, $fw: 700);
+      &::before {
+      }
+    }
+
+    &--da {
+      background-color: #bfe5f2;
+      border-radius: 10px;
+      @include font($ff: "Figtree", $c: #1e7594, $fw: 700);
+      &::before {
+      }
+    }
+
+    &--food {
+      background-color: #fff9f2;
+      border: 3px solid #f3832d;
+      border-radius: 10px;
+      @include font($ff: "DeliusUnicase", $c: #f3832d, $fw: 700);
+      &::before {
+      }
+    }
+  }
+}
+
+
+
+
+.btn-group{
+  @include dFlex($g: 8px);
+  width: 100%;
 }

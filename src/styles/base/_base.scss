@@ -35,11 +35,22 @@ a {
   }
 }
 
-button {
+span{
   &:hover{
+    cursor: default;
+  }
+}
+
+button {
+  &:hover {
+    filter: brightness(1.2);
+    cursor: pointer;
+    >span{
     filter: brightness(1.2);
     cursor: pointer;
   }
+  }
+  
   &:disabled{
     filter: grayscale(0.8);
     color: gray

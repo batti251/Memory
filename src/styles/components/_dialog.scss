@@ -131,3 +131,27 @@ b.player__counter {
     color: #A45212;
   }
 }
+
+
+
+.draw{
+  text-align: center;
+  &--code {
+      @include font($ff: "RedRose", $c: white, $fw: 700, $fs:clamp(1.5rem, 3rem, 4vw));
+    }
+
+    &--game {
+      @include font($ff: "Orbitron", $c: #e71c4f, $fw: 700, $fs:clamp(1.5rem, 3rem, 4vw));
+     
+    }
+
+    &--da {
+      @include font($ff: "Figtree", $c: #1e7594, $fw: 700, $fs:clamp(1.5rem, 3rem, 4vw));
+      
+    }
+
+    &--food {
+      @include font($ff: "DeliusUnicase", $c: white, $fw: 700, $fs:clamp(1.5rem, 3rem, 4vw));
+      
+    }
+}

@@ -110,7 +110,7 @@ export function loadHeader() {
             Current player: 
             <img id="current-player" data-turn="${players.player1.color}" src="/src/public/decks/theme_${gameSetup[0]}/player_${players.player1.color}_${gameSetup[0]}.svg" alt="current_players_icon">
         </div>
-        <button class="btn btn__exit btn__exit btn__exit--${gameSetup[0]}"><span class="btn__exit--text">Exit game</span></button>
+        <button id="btn-exit" class="btn btn__exit btn__exit btn__exit--${gameSetup[0]}"><span class="btn__exit--text">Exit game</span></button>
         </div>
         `
 }
@@ -193,7 +193,7 @@ function compareCards(targets: HTMLImageElement[]) {
     setTimeout(() => {
         targets[0].dataset.value == targets[1].dataset.value ? foundPair(targets) : coverCards(targets);
     }, 1000);
-
+    nextPlayer() //LÖSCHEN
 }
 
 /**
@@ -245,7 +245,7 @@ function coverCards(targets: HTMLImageElement[]) {
         t.classList.remove('flip');
         t.src = `/src/public/decks/theme_${gameSetup[0]}/cover_${gameSetup[0]}.svg`
     });
-    nextPlayer();
+    /* nextPlayer(); */
 }
 
 
@@ -288,7 +288,25 @@ function returnWinner():boolean {
  * Handler, to trigger a rematch, when no winner exists from ${@link returnWinner()} 
  */
 function restartGame() {
-    
+    console.log("restart");
+    console.log();
+    let dialog = document.getElementById('game-over');
+    dialog.classList.add('dialog');
+    dialog.innerHTML = loadGameMenu();
+    restartGameBtn();
+    exitGameBtn();
+}
+
+function loadGameMenu() {
+    return `
+    <article class="dialog dialog__${gameSetup[0]}">
+        <span class="draw draw--${gameSetup[0]}">DRAW</span>  
+        <div class="btn-group">
+         <button id="btn-restart" class="btn btn__restart btn__restart--${gameSetup[0]}"><span class="btn__exit--text"></span></button>
+         <button id="btn-exit-draw" class="btn btn__exit btn__exit btn__exit--${gameSetup[0]}"><span class="btn__exit--text">Exit</span></button>
+        </div>
+        </article>
+    `
 }
 
 function loadEndResult() {
@@ -325,4 +343,39 @@ export function loadWinningScreen() {
         <a href="/src/pages/settings.html" class="btn btn__exit btn__exit--${gameSetup[0]} btn__home btn__home--${gameSetup[0]}"><span class="btn__exit--text"></span></a>
     </article>
     `
+}
+
+
+/**
+ * Listener to restart the game, on draww
+ */
+function restartGameBtn() {
+    const btn = document.getElementById('btn-restart')
+    if (btn) {
+        btn.addEventListener('click', () => {
+            window.open('game.html', '_self')
+            sessionStorage.setItem('memory', JSON.stringify(gameSettingsPicked));
+        })
+    }
+    
+}
+
+export function exitGameBtn() {
+    const btnHeader = document.getElementById('btn-exit');
+    const btnDraw = document.getElementById('btn-exit-draw');
+    console.log(btnHeader);
+    
+    if (btnHeader) {
+        btnHeader.addEventListener('click', () => {
+            console.log("1");
+            
+            window.open('settings.html', '_self')
+        })
+    } 
+    if (btnDraw) {
+            btnDraw.addEventListener('click', () => {
+            window.open('settings.html', '_self')
+        })
+    }
+
 }
