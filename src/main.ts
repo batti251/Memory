@@ -7,6 +7,29 @@ export let gameSettingsPicked: string[] = [];
 let btn = document.getElementById('btn-start') as HTMLButtonElement;
 
 checkGameRequirements()
+initSetting();
+
+/**
+ * init-function on load for settings-page
+ */
+function initSetting() {
+    const url = window.location.href
+    window.addEventListener('load', () => {
+        if (url.includes('settings')) {
+            resetInputs();
+        }
+    })
+}
+
+/**
+ * unchecks all Input-Elements
+ */
+function resetInputs() {
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(i => {
+        i.checked = false
+    })
+}
 
 /**
  * Initializes Game preload. 
@@ -14,7 +37,7 @@ checkGameRequirements()
  */
 function checkGameRequirements() {
     const inputFieldRefs = document.querySelectorAll('input')
-    btn ?  btn.disabled = true : "";
+    btn ? btn.disabled = true : "";
     inputFieldRefs.forEach(e => e.addEventListener('click', () => {
         inputFieldRefs.forEach(e => {
             if (!gameSettings.includes(e.name)) {
@@ -67,8 +90,8 @@ function enableBtn() {
 function startGame() {
     btn.addEventListener('click', () => {
         if (!btn.disabled) {
-        window.open('game.html', '_self')
-        sessionStorage.setItem('memory', JSON.stringify(gameSettingsPicked));
+            window.open('game.html', '_self')
+            sessionStorage.setItem('memory', JSON.stringify(gameSettingsPicked));
         }
     })
 }
@@ -120,17 +143,17 @@ function settingsListener() {
  * @param s - word-suffix
  * @param p - prefix-word 
  */
-function updateSettingBar(e:HTMLInputElement, i:number, s:string, p:string) {
+function updateSettingBar(e: HTMLInputElement, i: number, s: string, p: string) {
     const settingsBarRef = document.querySelectorAll('.settings__bar-list')
     const settingsBar = settingsBarRef[0].children[i] as HTMLElement;
     const gameTheme = e.dataset.preview as string;
     settingsBar.dataset.picked = "false";
     if (gameTheme == "da") {
         settingsBar.innerHTML = gameTheme.toUpperCase() + " " + s
-         settingsBar.dataset.picked = "true";
+        settingsBar.dataset.picked = "true";
     } else {
         settingsBar.innerHTML = p + gameTheme.charAt(0).toUpperCase() + gameTheme.slice(1) + " " + s
-     settingsBar.dataset.picked = "true";
+        settingsBar.dataset.picked = "true";
     }
 
 }
