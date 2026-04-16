@@ -18,6 +18,9 @@
       &::marker {
         content: "";
       }
+      &:nth-child(1):before {
+        content: "";
+      }
       &:nth-child(n + 2):before {
         content: "";
         background-image: url("./../../public/icons/line_stroke.svg");

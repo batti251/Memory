@@ -19,7 +19,7 @@
   &--start-game {
     background-color: #f0ea6e;
     @include font($ff: "RedRose");
-    @include size($w: min(100px, 50%));
+    @include size($w: min(100px, 70%));
     > img {
       aspect-ratio: 1 / 1;
       width: min(40px, 20%);
