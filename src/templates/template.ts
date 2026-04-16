@@ -1,5 +1,64 @@
 import { gameSetup, players, cards, winner } from '../scripts/game';
 
+export function loadHeader() {
+    return `
+    <div class="game__header game__header--${gameSetup[0]}">
+        <div class="player__count player__count--${gameSetup[0]}">
+        <div class="player__count player__count--${players.player1.color}">
+            <img id="player-${players.player1.color}" src="/src/public/decks/theme_${gameSetup[0]}/player_${players.player1.color}_${gameSetup[0]}.svg" alt="players_icon">
+            <span class="player__color">${players.player1.color}</span>    
+            <span id="count_player-${players.player1.color}" class="player__counter player__counter--${players.player1.color}">0</span>
+            </div>
+            
+        <div class="player__count count player__count--${players.player2.color}">
+            <img id="player-${players.player2.color}" src="/src/public/decks/theme_${gameSetup[0]}/player_${players.player2.color}_${gameSetup[0]}.svg" alt="players_icon">
+            <span class="player__color">${players.player2.color}</span>    
+            <span id="count_player-${players.player2.color}" class="player__counter player__counter--${players.player2.color}">0</span>
+            </div>
+            
+        </div>
+        <div class="player__turn player__turn--${gameSetup[0]}">
+            Current player: 
+            <img id="current-player" data-turn="${players.player1.color}" src="/src/public/decks/theme_${gameSetup[0]}/player_${players.player1.color}_${gameSetup[0]}.svg" alt="current_players_icon">
+        </div>
+        <button id="btn-exit" class="btn btn__exit btn__exit btn__exit--${gameSetup[0]}"><span class="btn__exit--text">Exit game</span></button>
+        </div>
+        `
+}
+
+
+export function loadBoard() {
+    return `
+        <table class="board board__${gameSetup[2]} board__${gameSetup[0]}">
+            <tbody>
+                <tr class="board__row board__row--${gameSetup[2]}">
+                ${cards.map(c => {
+        return `
+                     <td class="card card__${gameSetup[0]}">
+                        <figure>
+                            <img data-value="${c}" data-select="false" class="card__cover" src="/src/public/decks/theme_${gameSetup[0]}/cover_${gameSetup[0]}.svg">
+                        </figure>
+                    </td>`
+    }).join("")
+        }
+                </tr>
+            </tbody>
+        </table>
+    `
+}
+
+export function openExitDialog() {
+    return `
+    <article class="popup__wrap--${gameSetup[0]}">
+        <span class=" popup__text--${gameSetup[0]}">Are you sure you want to quit the game?</span>  
+        <div class="popup-btn-group">
+         <button id="btn-back-to-game" class="btn btn__resume btn__resume--${gameSetup[0]}"></button>
+         <button id="btn-exit" class="btn btn__end btn__end--${gameSetup[0]}"></span></button>
+        </div>
+        </article>
+    `
+}
+
 
 export function loadGameMenu() {
     return `
@@ -49,53 +108,3 @@ export function loadWinningScreen() {
     </article>
     `
 }
-
-
-
-export function loadHeader() {
-    return `
-    <div class="game__header game__header--${gameSetup[0]}">
-        <div class="player__count player__count--${gameSetup[0]}">
-        <div class="player__count player__count--${players.player1.color}">
-            <img id="player-${players.player1.color}" src="/src/public/decks/theme_${gameSetup[0]}/player_${players.player1.color}_${gameSetup[0]}.svg" alt="players_icon">
-            <span class="player__color">${players.player1.color}</span>    
-            <span id="count_player-${players.player1.color}" class="player__counter player__counter--${players.player1.color}">0</span>
-            </div>
-            
-        <div class="player__count count player__count--${players.player2.color}">
-            <img id="player-${players.player2.color}" src="/src/public/decks/theme_${gameSetup[0]}/player_${players.player2.color}_${gameSetup[0]}.svg" alt="players_icon">
-            <span class="player__color">${players.player2.color}</span>    
-            <span id="count_player-${players.player2.color}" class="player__counter player__counter--${players.player2.color}">0</span>
-            </div>
-            
-        </div>
-        <div class="player__turn player__turn--${gameSetup[0]}">
-            Current player: 
-            <img id="current-player" data-turn="${players.player1.color}" src="/src/public/decks/theme_${gameSetup[0]}/player_${players.player1.color}_${gameSetup[0]}.svg" alt="current_players_icon">
-        </div>
-        <button id="btn-exit" class="btn btn__exit btn__exit btn__exit--${gameSetup[0]}"><span class="btn__exit--text">Exit game</span></button>
-        </div>
-        `
-}
-
-
-export function loadBoard() {
-    return `
-        <table class="board board__${gameSetup[2]} board__${gameSetup[0]}">
-            <tbody>
-                <tr class="board__row board__row--${gameSetup[2]}">
-                ${cards.map(c => {
-        return `
-                     <td class="card card__${gameSetup[0]}">
-                        <figure>
-                            <img data-value="${c}" data-select="false" class="card__cover" src="/src/public/decks/theme_${gameSetup[0]}/cover_${gameSetup[0]}.svg">
-                        </figure>
-                    </td>`
-    }).join("")
-        }
-                </tr>
-            </tbody>
-        </table>
-    `
-}
-

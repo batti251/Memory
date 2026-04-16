@@ -1,0 +1,97 @@
+@use "./../abstracts/" as *;
+
+.popup {
+  border: unset;
+  border-radius: 20px;
+  display: flex;
+  @include size($w: min(500px, 80%));
+  @include position($p: absolute, $t: 50%, $l: 50%);
+  transform: translate(-50%, -50%);
+
+  &__text {
+    &--code {
+      @include font($ff: RedRose, $fw: 700, $fs: clamp(1.25rem, 1.5rem, 2vw));
+      width: 80%;
+      text-align: center;
+    }
+
+    &--game {
+      @include font(
+        $ff: Orbitron,
+        $c: #294f60,
+        $fw: 700,
+        $fs: clamp(1.25rem, 1.5rem, 2vw)
+      );
+      width: 80%;
+      text-align: center;
+    }
+     &--da {
+      @include font(
+        $ff: Figtree,
+        $c: #294F60,
+        $fw: 700,
+        $fs: clamp(1.25rem, 1.5rem, 2vw)
+      );
+      width: 80%;
+      text-align: center;
+    }
+    &--food{
+      @include font(
+        $ff: KleeOne,
+        $c: #A45212,
+        $fw: 700,
+        $fs: clamp(1.25rem, 1.5rem, 2vw)
+      );
+      width: 80%;
+      text-align: center;
+    }
+  }
+
+  &__wrap {
+    &--code {
+      padding: min(32px, 6%);
+      background-color: white;
+      @include dFlex($g: 32px);
+      @include size($w: 100%, $h: 100%);
+    }
+
+    &--game {
+      padding: min(32px, 6%);
+      border-radius: 20px;
+      background-color: #f0f6f9;
+      @include dFlex($g: 32px);
+      @include size($w: 100%, $h: 100%);
+    }
+
+    &--da {
+      padding: min(32px, 6%);
+      border-radius: 20px;
+      background-color: #F0F6F9;
+      @include dFlex($g: 32px);
+      @include size($w: 100%, $h: 100%);
+    }
+
+    &--food {
+      padding: min(32px, 6%);
+      border-radius: 20px;
+      background-color: #F6F6F6;
+      @include dFlex($g: 32px);
+      @include size($w: 100%, $h: 100%);
+      &--win {
+        background-color: white;
+      }
+    }
+  }
+  &-btn-group {
+    @include dFlex($fd: unset, $g: 8px);
+    @include size($w: 100%);
+
+    @include respond(s) {
+      flex-direction: column;
+    }
+  }
+
+  @include respond(s) {
+    height: 30%;
+  }
+}

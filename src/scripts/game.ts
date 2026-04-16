@@ -1,4 +1,4 @@
-import { loadGameMenu, loadWinningScreen, loadEndResult } from '../templates/template';
+import { loadGameMenu, loadWinningScreen, loadEndResult, openExitDialog } from '../templates/template';
 import { gameSettingsPicked } from '../main';
 
 
@@ -229,7 +229,7 @@ function gameEnd() {
  * Handler to evaluate the result
  * @returns [true: a winner exists ; false: game-draw]
  */
-function returnWinner():boolean {
+function returnWinner(): boolean {
     if (globalCount.blue > globalCount.orange) {
         winner = "blue"
         return true
@@ -246,8 +246,6 @@ function returnWinner():boolean {
  * Handler, to trigger a rematch, when no winner exists from ${@link returnWinner()} 
  */
 function restartGame() {
-    console.log("restart");
-    console.log();
     let dialog = document.getElementById('game-over') as HTMLElement;
     dialog.classList.add('dialog');
     dialog.innerHTML = loadGameMenu();
@@ -267,25 +265,28 @@ function restartGameBtn() {
             sessionStorage.setItem('memory', JSON.stringify(gameSettingsPicked));
         })
     }
-    
+
 }
 
 export function exitGameBtn() {
     const btnHeader = document.getElementById('btn-exit');
     const btnDraw = document.getElementById('btn-exit-draw');
-    console.log(btnHeader);
-    
     if (btnHeader) {
         btnHeader.addEventListener('click', () => {
-            console.log("1");
-            
-            window.open('settings.html', '_self')
+            openPopup();
         })
-    } 
+    }
     if (btnDraw) {
-            btnDraw.addEventListener('click', () => {
+        btnDraw.addEventListener('click', () => {
             window.open('settings.html', '_self')
         })
     }
+}
+
+function openPopup() {
+    let dialog = document.getElementById('game-over') as HTMLElement;
+    dialog.classList.add('popup');
+    dialog.innerHTML = openExitDialog();
+    exitGameBtn();
 
 }

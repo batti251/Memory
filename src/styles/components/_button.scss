@@ -100,7 +100,7 @@
   }
 
   &__restart {
-        width: min(170px, 50%);
+    width: min(170px, 50%);
     &:before {
       padding: 4px 8px;
       content: " Restart Game";
@@ -142,13 +142,110 @@
       &::before {
       }
     }
+   
+  }
+
+  &__resume {
+    @include size($w: min(200px, 60%));
+    padding: 12px;
+     @include respond(s){
+        width: 90% !important;
+      }
+    &--code {
+      background-color: #66cfbc;
+      border: 1px solid #4dd5bc;
+      @include font($ff: RedRose, $c: white, $fw: 700, $fs: clamp(1rem, 1.5rem, 1vw));
+      &::before {
+        content: "Back to game";
+      }
+    }
+
+    &--game {
+      background-color: #ED1B76;
+      border: 1px solid #E71C4F;
+      border-radius: 10px;
+      width: min(220px, 70%);
+      @include font($ff: Orbitron, $c: white, $fw: 700, $fs: clamp(1rem, 1.5rem, 1vw));
+      &::before {
+        content: "No, back to game";
+      }
+    }
+
+    &--da {
+      background-color: #BFE5F2;
+      border-radius: 10px;
+      box-shadow: 3px 3px 5px #2F2E2E33;
+      width: min(140px, 60%);
+      @include font($ff: Figtree, $c: #1E7594, $fw: 700, $fs: clamp(1rem, 1.5rem, 1vw));
+      &::before {
+        content: "Back to game";
+      }
+    }
+
+    &--food {
+      width: min(270px, 80%) ;
+      background-color: #FFAB3E;
+      border: 3px solid #F3832D;
+      border-radius: 10px;
+      @include font($ff: DeliusUnicase, $c: white, $fw: 700, $fs: clamp(1rem, 1.5rem, 1vw));
+      &::before {
+        content: "No, back to game";
+      }
+    }
+  }
+
+  &__end {
+    @include size($w: min(190px, 60%));
+    padding: 12px;
+     @include respond(s){
+        width: 90% !important;
+      }
+
+    &--code {
+      background-color: #eefcf9;
+      border: 1px solid #4dd5bc;
+      @include font($ff: "RedRose", $c: #4dd5bc, $fw: 700, $fs: clamp(1rem, 1.5rem, 1vw));
+      &::before {
+        content: "Exit game";
+      }
+    }
+
+    &--game {
+      background-color: #f0e4ef;
+      border: 1px solid #E71C4F;
+      border-radius: 10px;
+      @include font($ff: "Orbitron", $c: #ED1B76, $fw: 700, $fs: clamp(1rem, 1.5rem, 1vw));
+      &::before {
+        content: "Yes, quit game";
+      }
+    }
+
+    &--da {
+      background-color: #FD8A81;
+      border-radius: 10px;
+      box-shadow: 3px 3px 5px #2F2E2E33;
+      width: min(140px, 60%);
+      @include font($ff: Figtree, $c: white, $fw: 700, $fs: clamp(1rem, 1.5rem, 1vw));
+      &::before {
+        content: "Exit game";
+      }
+    }
+
+    &--food {
+      width: min(170px, 70%);
+      background-color: #FFF9F2;
+      border: 3px solid #F3832D;
+      border-radius: 10px;
+      @include font($ff: DeliusUnicase, $c: #F3832D, $fw: 700, $fs: clamp(1rem, 1.5rem, 1vw));
+      &::before {
+        content: "Exit game";
+      }
+      
+    }
   }
 }
 
-
-
-
-.btn-group{
+.btn-group {
   @include dFlex($g: 8px);
   width: 100%;
 }
