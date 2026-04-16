@@ -246,7 +246,7 @@ function returnWinner(): boolean {
  * Handler, to trigger a rematch, when no winner exists from ${@link returnWinner()} 
  */
 function restartGame() {
-    let dialog = document.getElementById('game-over') as HTMLElement;
+    let dialog = document.getElementById('game-over') as HTMLDialogElement;
     dialog.classList.add('dialog');
     dialog.innerHTML = loadGameMenu();
     restartGameBtn();
@@ -271,9 +271,11 @@ function restartGameBtn() {
 export function exitGameBtn() {
     const btnHeader = document.getElementById('btn-exit');
     const btnDraw = document.getElementById('btn-exit-draw');
+
     if (btnHeader) {
         btnHeader.addEventListener('click', () => {
-            openPopup();
+            btnPopup()
+
         })
     }
     if (btnDraw) {
@@ -281,12 +283,32 @@ export function exitGameBtn() {
             window.open('settings.html', '_self')
         })
     }
+    console.log("fire");
+
 }
 
-function openPopup() {
-    let dialog = document.getElementById('game-over') as HTMLElement;
+
+function btnPopup() {
+    const dialog = document.getElementById('game-over') as HTMLDialogElement;
     dialog.classList.add('popup');
     dialog.innerHTML = openExitDialog();
-    exitGameBtn();
+    dialog.showModal();
 
+    const btnResume = document.getElementById('btn-resume');
+    const btnQuit = document.getElementById('btn-quit');
+
+    if (btnResume) {
+        btnResume.addEventListener('click', () => {
+            dialog.classList.remove('popup')
+            dialog.close();
+        })
+    }
+
+
+    if(btnQuit){
+        btnQuit.addEventListener('click', () => {
+        console.log(btnQuit);
+        window.open('settings.html', '_self')
+    })}
 }
+

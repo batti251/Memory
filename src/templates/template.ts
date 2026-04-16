@@ -52,8 +52,8 @@ export function openExitDialog() {
     <article class="popup__wrap--${gameSetup[0]}">
         <span class=" popup__text--${gameSetup[0]}">Are you sure you want to quit the game?</span>  
         <div class="popup-btn-group">
-         <button id="btn-back-to-game" class="btn btn__resume btn__resume--${gameSetup[0]}"></button>
-         <button id="btn-exit" class="btn btn__end btn__end--${gameSetup[0]}"></span></button>
+         <button id="btn-resume" class="btn btn__resume btn__resume--${gameSetup[0]}"></button>
+         <button id="btn-quit" class="btn btn__end btn__end--${gameSetup[0]}"></span></button>
         </div>
         </article>
     `
