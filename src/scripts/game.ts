@@ -246,76 +246,104 @@ function returnWinner(): boolean {
  * Handler, to trigger a rematch, when no winner exists from ${@link returnWinner()} 
  */
 function restartGame() {
-    let dialog = document.getElementById('game-over') as HTMLDialogElement;
+    const dialog = document.getElementById('game-over') as HTMLDialogElement;
     dialog.classList.add('dialog');
     dialog.innerHTML = loadGameMenu();
-    restartGameBtn();
     exitGameBtn();
 }
 
 
 /**
- * Listener to restart the game, on draww
+ * Activates eventlisteners ingame for exit-button & draw-buttons
  */
-function restartGameBtn() {
-    const btn = document.getElementById('btn-restart')
-    if (btn) {
-        btn.addEventListener('click', () => {
-            window.open('game.html', '_self')
-            sessionStorage.setItem('memory', JSON.stringify(gameSettingsPicked));
-        })
-    }
-
-}
-
 export function exitGameBtn() {
-    const btnHeader = document.getElementById('btn-exit');
-    const btnDraw = document.getElementById('btn-exit-draw');
+    const btnHeader = document.getElementById('btn-exit') as HTMLButtonElement;
+    const btnDraw = document.getElementById('btn-exit-draw') as HTMLButtonElement;
+    const btnRestart = document.getElementById('btn-restart') as HTMLButtonElement;
     if (btnHeader) {
-        btnHeader.addEventListener('click', () => {
-            openDialog();
-            loadPopupBtn();
-        })
+        openDialog(btnHeader);
     }
     if (btnDraw) {
-        btnDraw.addEventListener('click', () => {
-            window.open('settings.html', '_self');
-            deleteSessionStorage();
-        })
+        returnToSettings(btnDraw);
+    }
+    if (btnRestart) {
+        startGame(btnRestart);
     }
 }
 
-
-function loadPopupBtn() {
-    const btnResume = document.getElementById('btn-resume');
-    const btnQuit = document.getElementById('btn-quit');
-    if (btnResume) {
-        btnResume.addEventListener('click', () => {
-            closeDialog();
+/**
+ * eventlistener for starting a new game
+ * @param btn - the clicked button
+ */
+function startGame(btn:HTMLButtonElement) {
+    btn.addEventListener('click', () => {
+            window.open('game.html', '_self')
         })
-    }
-    if (btnQuit) {
-        btnQuit.addEventListener('click', () => {
-            window.open('settings.html', '_self');
-            deleteSessionStorage();
-        })
-    }
 }
 
+/**
+ * opens the dialog-modal and load relevant button-eventlisteners
+ * @param btn - the clicked button
+ */
+function openDialog(btn:HTMLButtonElement) {
+    btn.addEventListener('click' , () => {
+        showDialog();
+        loadPopupBtn();
+    })
+}
 
-function openDialog() {
+/**
+ * shows the dialog-element
+ * adds popup.class for specific design
+ */
+function showDialog() {
     const dialog = document.getElementById('game-over') as HTMLDialogElement;
     dialog.classList.add('popup');
     dialog.innerHTML = openExitDialog();
     dialog.showModal();
 }
 
+/**
+ * Activates eventlisteners for popup-buttons 
+ */
+function loadPopupBtn() {
+    const btnResume = document.getElementById('btn-resume');
+    const btnQuit = document.getElementById('btn-quit') as HTMLButtonElement;
+    if (btnResume) {
+        btnResume.addEventListener('click', () => {
+            closeDialog();
+        })
+    }
+    if (btnQuit) {
+        returnToSettings(btnQuit)
+    }
+}
+
+/**
+ * Sends the user back to the settings-page
+ * Additionally deletes session storage
+ * @param btn - button
+ */
+function returnToSettings(btn: HTMLButtonElement) {
+    btn.addEventListener('click', () => {
+        window.open('settings.html', '_self');
+        deleteSessionStorage();
+    })
+}
+
+
+/**
+ * CLoses the dialog-element
+ */
 function closeDialog() {
     const dialog = document.getElementById('game-over') as HTMLDialogElement;
     dialog.classList.remove('popup');
     dialog.close();
 }
 
+/**
+ * deletes the sessionstorage 'memory'
+ */
 function deleteSessionStorage() {
     sessionStorage.removeItem('memory')
 }
