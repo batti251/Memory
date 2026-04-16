@@ -271,44 +271,51 @@ function restartGameBtn() {
 export function exitGameBtn() {
     const btnHeader = document.getElementById('btn-exit');
     const btnDraw = document.getElementById('btn-exit-draw');
-
     if (btnHeader) {
         btnHeader.addEventListener('click', () => {
-            btnPopup()
-
+            openDialog();
+            loadPopupBtn();
         })
     }
     if (btnDraw) {
         btnDraw.addEventListener('click', () => {
-            window.open('settings.html', '_self')
+            window.open('settings.html', '_self');
+            deleteSessionStorage();
         })
     }
-    console.log("fire");
-
 }
 
 
-function btnPopup() {
+function loadPopupBtn() {
+    const btnResume = document.getElementById('btn-resume');
+    const btnQuit = document.getElementById('btn-quit');
+    if (btnResume) {
+        btnResume.addEventListener('click', () => {
+            closeDialog();
+        })
+    }
+    if (btnQuit) {
+        btnQuit.addEventListener('click', () => {
+            window.open('settings.html', '_self');
+            deleteSessionStorage();
+        })
+    }
+}
+
+
+function openDialog() {
     const dialog = document.getElementById('game-over') as HTMLDialogElement;
     dialog.classList.add('popup');
     dialog.innerHTML = openExitDialog();
     dialog.showModal();
-
-    const btnResume = document.getElementById('btn-resume');
-    const btnQuit = document.getElementById('btn-quit');
-
-    if (btnResume) {
-        btnResume.addEventListener('click', () => {
-            dialog.classList.remove('popup')
-            dialog.close();
-        })
-    }
-
-
-    if(btnQuit){
-        btnQuit.addEventListener('click', () => {
-        console.log(btnQuit);
-        window.open('settings.html', '_self')
-    })}
 }
 
+function closeDialog() {
+    const dialog = document.getElementById('game-over') as HTMLDialogElement;
+    dialog.classList.remove('popup');
+    dialog.close();
+}
+
+function deleteSessionStorage() {
+    sessionStorage.removeItem('memory')
+}
