@@ -110,8 +110,8 @@ export function playersFirstTurn() {
 function uncoverCard() {
     addEventListener('click', (e) => {
         let target = e.target as HTMLImageElement
-        let clickedTarget = [...target.classList];
-        if (clickedTarget.includes("card__cover") && target.dataset.select == "false") {
+        let clickedTarget = target.classList;
+        if (clickedTarget.contains("card__cover") && target.dataset.select == "false") {
             targets.length == 2 ? targets = [] : "";
             flipCard(target);
         }
@@ -123,10 +123,10 @@ function uncoverCard() {
  * @param target - the clicked img-element
  */
 function flipCard(target: HTMLImageElement) {
-    target.classList.add('flip');
-    revealCard(target)
-    targets.push(target);
-    targets.length == 2 ? compareCards(targets) : "";
+        target.classList.add('flip');
+        revealCard(target)
+        targets.push(target);
+        targets.length == 2 ? compareCards(targets) : "";
 }
 
 /**
@@ -135,7 +135,7 @@ function flipCard(target: HTMLImageElement) {
  */
 function revealCard(target: HTMLImageElement) {
     setTimeout(() => {
-        target.src = `/src/public/decks/theme_${gameSetup[0]}/cards/card_${target.dataset.value}.svg`
+        target.src = `/decks/theme_${gameSetup[0]}/cards/card_${target.dataset.value}.svg`
     }, 500);
 }
 
@@ -159,7 +159,7 @@ function compareCards(targets: HTMLImageElement[]) {
 function nextPlayer() {
     let currentPlayer = document.getElementById('current-player') as HTMLImageElement
     currentPlayer?.dataset.turn == "orange" ? currentPlayer.dataset.turn = "blue" : currentPlayer.dataset.turn = "orange";
-    currentPlayer?.dataset.turn == "orange" ? currentPlayer.src = `/src/public/decks/theme_${gameSetup[0]}/player_orange_${gameSetup[0]}.svg` : currentPlayer.src = `/src/public/decks/theme_${gameSetup[0]}/player_blue_${gameSetup[0]}.svg`;
+    currentPlayer?.dataset.turn == "orange" ? currentPlayer.src = `/decks/theme_${gameSetup[0]}/player_orange_${gameSetup[0]}.svg` : currentPlayer.src = `/decks/theme_${gameSetup[0]}/player_blue_${gameSetup[0]}.svg`;
 }
 
 /**
@@ -200,9 +200,9 @@ function foundPair(targets: HTMLImageElement[]) {
 function coverCards(targets: HTMLImageElement[]) {
     targets.forEach(t => {
         t.classList.remove('flip');
-        t.src = `/src/public/decks/theme_${gameSetup[0]}/cover_${gameSetup[0]}.svg`
+        t.src = `/decks/theme_${gameSetup[0]}/cover_${gameSetup[0]}.svg`
     });
-    /* nextPlayer(); */
+    nextPlayer();
 }
 
 
@@ -274,18 +274,18 @@ export function exitGameBtn() {
  * eventlistener for starting a new game
  * @param btn - the clicked button
  */
-function startGame(btn:HTMLButtonElement) {
+function startGame(btn: HTMLButtonElement) {
     btn.addEventListener('click', () => {
-            window.open('game.html', '_self')
-        })
+        window.open('game.html', '_self')
+    })
 }
 
 /**
  * opens the dialog-modal and load relevant button-eventlisteners
  * @param btn - the clicked button
  */
-function openDialog(btn:HTMLButtonElement) {
-    btn.addEventListener('click' , () => {
+function openDialog(btn: HTMLButtonElement) {
+    btn.addEventListener('click', () => {
         showDialog();
         loadPopupBtn();
     })

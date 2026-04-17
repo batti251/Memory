@@ -27,13 +27,13 @@
       }
       &:nth-child(n + 2):before {
         content: "";
-        background-image: url("./../../public/icons/line_stroke.svg");
+        background-image: url("/icons/line_stroke.svg");
         width: 32px;
         height: 54px;
       }
       &:nth-child(n + 2)[data-picked="true"]:before {
         content: "";
-        background-image: url("./../../public/icons/line_wand_45deg.svg");
+        background-image: url("/icons/line_wand_45deg.svg");
         width: 28px;
         height: 54px;
       }

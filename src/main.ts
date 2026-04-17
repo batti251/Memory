@@ -58,7 +58,7 @@ function collectGameSettings() {
     gameSettingsPicked = [];
     gameSettings.forEach(e => {
         let radios = document.getElementsByName(e);
-        [...radios].forEach((e) => (addGameSetting(e as HTMLInputElement))
+        radios.forEach((e) => (addGameSetting(e as HTMLInputElement))
         )
     })
     enableBtn()

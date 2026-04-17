@@ -27,19 +27,19 @@
     &--game {
       &:before {
       @include dFlex($fd: unset, $jc: unset, $g: 8px);
-        content: url("./../../public/icons/color-palette.svg");
+        content: url("/icons/color-palette.svg");
       }
     }
     &--player {
       @include dFlex($fd: unset, $jc: unset, $g: 8px);
       &:before {
-        content: url("./../../public/icons/chess_pawn.svg");
+        content: url("/icons/chess_pawn.svg");
       }
     }
     &--board {
       @include dFlex($fd: unset, $jc: unset, $g: 8px);
       &:before {
-        content: url("./../../public/icons/card_board.svg");
+        content: url("/icons/card_board.svg");
       }
     }
   }
@@ -78,7 +78,7 @@
 
      }
       span::after {
-        content: url("./../../public/icons/line_wand.svg");
+        content: url("/icons/line_wand.svg");
         filter: grayscale(0.5);
         position: relative;
         top: 3px;
@@ -88,7 +88,7 @@
     :checked + span {
       font-weight: 700;
       &::after {
-        content: url("./../../public/icons/line_wand.svg");
+        content: url("/icons/line_wand.svg");
         filter: grayscale(0) !important;
         position: relative;
         top: 3px;

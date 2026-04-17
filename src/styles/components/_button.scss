@@ -45,7 +45,7 @@
       border: 1px solid #4dd5bc;
       @include font($ff: "RedRose", $c: white, $fw: 700);
       &::before {
-        content: url("/src/public/icons/exit.svg");
+        content: url("/icons/exit.svg");
       }
     }
 
@@ -55,7 +55,7 @@
       border: 2px solid #e71c4f;
       @include font($ff: "Orbitron", $c: white, $fw: 700);
       &::before {
-        content: url("/src/public/icons/exit.svg");
+        content: url("/icons/exit.svg");
       }
     }
 
@@ -64,7 +64,7 @@
       border-radius: 10px;
       @include font($ff: "Figtree", $c: #1e7594, $fw: 700);
       &::before {
-        content: url("/src/public/icons/exit_blue.svg");
+        content: url("/icons/exit_blue.svg");
       }
     }
 
@@ -74,7 +74,7 @@
       border-radius: 10px;
       @include font($ff: "DeliusUnicase", $c: #f3832d, $fw: 700);
       &::before {
-        content: url("/src/public/icons/exit_orange.svg");
+        content: url("/icons/exit_orange.svg");
       }
     }
   }

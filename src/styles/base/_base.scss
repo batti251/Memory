@@ -61,10 +61,10 @@ body {
 
 input[type=radio]{
   appearance: none;
-  background-image: url('./../../public/icons/checkbox_unchecked.svg');
+  background-image: url('/icons/checkbox_unchecked.svg');
   @include size($w:20px, $h: 20px);
   &:checked{
-    background-image: url('./../../public/icons/checkbox_checked.svg');
+    background-image: url('/icons/checkbox_checked.svg');
   }
 }
 
