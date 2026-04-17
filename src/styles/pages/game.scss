@@ -1,5 +1,18 @@
 @use "./../abstracts/" as *;
 
+body:has(.page--game){
+  background-color: #294f60;
+}
+body:has(.page--code){
+  background-color: #303131;
+}
+body:has(.page--da){
+  background-color: white;
+}
+body:has(.page--food){
+  background-color: white;
+}
+
 .page {
   height: 100dvh;
   overflow-y: auto;

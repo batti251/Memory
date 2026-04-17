@@ -43,7 +43,7 @@
     &--code {
       background-color: #86e9d633;
       border: 1px solid #4dd5bc;
-      @include font($ff: "RedRose", $c: white, $fw: 700);
+      @include font($ff: "RedRose", $c: white, $fw: 700, $fs: clamp(1.125rem, 1.25rem, 1vw));
       &::before {
         content: url("/icons/exit.svg");
       }
@@ -53,7 +53,7 @@
       background-color: #5f5875;
       border-radius: 10px;
       border: 2px solid #e71c4f;
-      @include font($ff: "Orbitron", $c: white, $fw: 700);
+      @include font($ff: "Orbitron", $c: white, $fw: 700, $fs: clamp(1.125rem, 1.25rem, 1vw));
       &::before {
         content: url("/icons/exit.svg");
       }
@@ -62,7 +62,7 @@
     &--da {
       background-color: #bfe5f2;
       border-radius: 10px;
-      @include font($ff: "Figtree", $c: #1e7594, $fw: 700);
+      @include font($ff: "Figtree", $c: #1e7594, $fw: 700, $fs: clamp(1.125rem, 1.25rem, 1vw));
       &::before {
         content: url("/icons/exit_blue.svg");
       }
@@ -72,7 +72,7 @@
       background-color: #fff9f2;
       border: 3px solid #f3832d;
       border-radius: 10px;
-      @include font($ff: "DeliusUnicase", $c: #f3832d, $fw: 700);
+      @include font($ff: "DeliusUnicase", $c: #f3832d, $fw: 700, $fs: clamp(1.125rem, 1.175rem, 1vw));
       &::before {
         content: url("/icons/exit_orange.svg");
       }
@@ -164,7 +164,7 @@
       background-color: #bfe5f2;
       border-radius: 10px;
       box-shadow: 3px 3px 5px #2f2e2e33;
-      width: min(140px, 60%);
+      width: min(180px, 60%);
       @include font( $ff: Figtree, $c: #1e7594, $fw: 700, $fs: clamp(1rem, 1.5rem, 1vw)
       );
       &::before {
