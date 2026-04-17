@@ -8,6 +8,11 @@
   &:has(.game__header--game){
     background-color: #294F60;
   }
+  @include respond(m){
+    position: sticky;
+    top: 0;
+    padding: 0 0 2%;
+  }
 }
 
 .game__header {
