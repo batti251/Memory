@@ -1,5 +1,4 @@
 import { loadGameMenu, loadWinningScreen, loadEndResult, openExitDialog } from '../templates/template';
-import { gameSettingsPicked } from '../main';
 
 
 init();
