@@ -123,10 +123,10 @@ function uncoverCard() {
  * @param target - the clicked img-element
  */
 function flipCard(target: HTMLImageElement) {
-        target.classList.add('flip');
-        revealCard(target)
-        targets.push(target);
-        targets.length == 2 ? compareCards(targets) : "";
+    target.classList.add('flip');
+    revealCard(target)
+    targets.push(target);
+    targets.length == 2 ? compareCards(targets) : "";
 }
 
 /**
@@ -270,6 +270,8 @@ export function exitGameBtn() {
     }
 }
 
+
+
 /**
  * eventlistener for starting a new game
  * @param btn - the clicked button
@@ -336,8 +338,12 @@ function returnToSettings(btn: HTMLButtonElement) {
  */
 function closeDialog() {
     const dialog = document.getElementById('game-over') as HTMLDialogElement;
-    dialog.classList.remove('popup');
-    dialog.close();
+        dialog.classList.remove('popup');
+        dialog.close();
+        dialog.addEventListener('close', () => {
+            dialog.classList.remove('popup');
+            dialog.close();
+    })
 }
 
 /**
