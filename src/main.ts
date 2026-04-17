@@ -1,6 +1,6 @@
 import './styles/main.scss';
 import { loadHeader, loadBoard } from './templates/template';
-import { playersFirstTurn, exitGameBtn } from './scripts/game';
+import { playersFirstTurn, exitGameBtn, gameSetup } from './scripts/game';
 
 let gameSettings: string[] = [];
 export let gameSettingsPicked: string[] = [];
@@ -104,15 +104,35 @@ initGame();
  */
 function initGame() {
     addEventListener('load', () => {
-        const header = document.getElementById('header') as HTMLElement;
-        const gameBoard = document.getElementById('board') as HTMLElement;
-        if (header && gameBoard) {
+
+        const page = document.querySelector('.page')
+        if (page) {
             playersFirstTurn();
-            header.innerHTML = loadHeader();
-            gameBoard.innerHTML = loadBoard();
-            exitGameBtn()
+            page.outerHTML = pageLoad();
+            loadGame();
+            exitGameBtn();
         }
     })
+}
+
+function loadGame() {
+      const header = document.getElementById('header') as HTMLElement;
+      const gameBoard = document.getElementById('board') as HTMLElement;
+            header.innerHTML = loadHeader();
+            gameBoard.innerHTML = loadBoard();
+}
+
+function pageLoad() {
+    return `
+    <div class="page page--${gameSetup[0]}">
+    <header id="header"></header>
+    <main id="board"></main>
+
+    <dialog id="game-over">
+
+    </dialog>
+    </div>
+    `
 }
 
 

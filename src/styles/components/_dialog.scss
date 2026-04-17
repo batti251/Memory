@@ -3,7 +3,7 @@
 .dialog {
   @include dFlex($g: 16px);
   @include size($w: 100%, $h: 100%);
-  position: absolute;
+  position: fixed;
   top: 0;
   border: unset;
 

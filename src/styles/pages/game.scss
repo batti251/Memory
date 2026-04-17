@@ -1,0 +1,57 @@
+@use "./../abstracts/" as *;
+
+.page {
+  height: 100dvh;
+  overflow-y: auto;
+
+  &--game {
+    background-color: #294f60;
+    &::-webkit-scrollbar-thumb {
+      background: #294f6080;
+    }
+    &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  }
+
+  &--code {
+    background-color: #303131;
+    &::-webkit-scrollbar-thumb {
+      background: #30313180;
+    }
+    &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  }
+
+  &--da {
+    background-color: white;
+    &::-webkit-scrollbar-thumb {
+      background: #1e759480;
+    }
+    &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  }
+
+  &--food {
+    background-color: white;
+    &::-webkit-scrollbar-thumb {
+      background: #f3832d80;
+    }
+    &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+  }
+ &::-webkit-scrollbar-thumb  {
+    border-radius: 10px;
+  }
+   &::-webkit-scrollbar-track  {
+    border-radius: 10px;
+  }
+}

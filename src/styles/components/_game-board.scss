@@ -2,6 +2,7 @@
 
 .board {
     @include dFlex();
+    padding: 16px;
   &__code {
     background-color: #303131;
   }
@@ -23,7 +24,7 @@
 
     &--24,
     &--36 {
-      grid-template-columns: repeat(6, 14%);
+      grid-template-columns: repeat(6, 12%);
       @include respond(m){
         grid-template-columns: repeat(4, 20%);
       }

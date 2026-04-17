@@ -9,6 +9,50 @@ body {
   box-sizing: border-box;
 }
 
+body {
+.page{
+  &--game {
+    background-color: #294f60;
+    &::-webkit-scrollbar-thumb {
+      background: #294f6080;
+    }
+  }
+
+  &--code {
+    background-color: #303131;
+    &::-webkit-scrollbar-thumb {
+      background: #30313180;
+    }
+  }
+
+  &--da {
+    background-color: white;
+    &::-webkit-scrollbar-thumb {
+      background: #1e759480;
+    }
+  }
+
+  &--food {
+    background-color: white;
+    &::-webkit-scrollbar-thumb {
+      background: #f3832d80;
+    }
+  }
+
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+  }
+ &::-webkit-scrollbar-thumb  {
+    border-radius: 10px;
+  }
+   &::-webkit-scrollbar-track  {
+    border-radius: 10px;
+  }
+}
+}
+
 * {
   margin: 0;
   margin-block: 0;
@@ -59,3 +103,4 @@ button {
     cursor: default;
   }
 }
+
