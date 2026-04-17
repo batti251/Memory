@@ -1,5 +1,17 @@
 import { gameSetup, players, cards, winner } from '../scripts/game';
 
+
+export function loadPage() {
+    return `
+    <div class="page page--${gameSetup[0]}">
+    <header id="header"></header>
+    <main id="board"></main>
+    <dialog id="game-over"></dialog>
+    </div>
+    `
+}
+
+
 export function loadHeader() {
     return `
     <div class="game__header game__header--${gameSetup[0]}">

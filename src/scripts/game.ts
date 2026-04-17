@@ -1,7 +1,7 @@
 import { loadGameMenu, loadWinningScreen, loadEndResult, openExitDialog } from '../templates/template';
 
 
-init();
+initGame();
 uncoverCard();
 
 const gameSetupStorage: string | any = sessionStorage.getItem('memory');
@@ -41,23 +41,31 @@ export let players: {
 }
 
 
-
-function init() {
-    addEventListener('load', (event) => {
+/**
+ * starts game initiation
+ * it stores random card-values and shuffles them
+ */
+function initGame() {
+    addEventListener('load', () => {
         if (gameSetup) {
-            const gameBoardSize: number = parseInt(gameSetup[2])
+           loadCards();
+        }
+        shuffle()
+    })
+}
+
+/**
+ * generates the card-deck, that is used for the game
+ */
+function loadCards() {
+     const gameBoardSize:number = parseInt(gameSetup[2])
             cards = []
-            const gamePairs: number = gameBoardSize / 2
+            const gamePairs:number = gameBoardSize / 2
             let x = 0
             while (x < gamePairs) {
                 randomArray()
                 x++
             }
-        }
-        shuffle()
-        console.log(cards);
-
-    })
 }
 
 /**
@@ -92,7 +100,9 @@ function shuffle() {
     }
 }
 
-
+/**
+ * selects, who starts the game, according to the preselect-setting
+ */
 export function playersFirstTurn() {
     if (gameSetup) {
         players.player1.color = gameSetup[1]

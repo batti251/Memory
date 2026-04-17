@@ -1,6 +1,6 @@
 import './styles/main.scss';
-import { loadHeader, loadBoard } from './templates/template';
-import { playersFirstTurn, exitGameBtn, gameSetup } from './scripts/game';
+import { loadHeader, loadBoard, loadPage } from './templates/template';
+import { playersFirstTurn, exitGameBtn } from './scripts/game';
 
 let gameSettings: string[] = [];
 export let gameSettingsPicked: string[] = [];
@@ -108,13 +108,16 @@ function initGame() {
         const page = document.querySelector('.page')
         if (page) {
             playersFirstTurn();
-            page.outerHTML = pageLoad();
+            page.outerHTML = loadPage();
             loadGame();
             exitGameBtn();
         }
     })
 }
 
+/**
+ * initiates the header and gameboard according to the preselect settings 
+ */
 function loadGame() {
       const header = document.getElementById('header') as HTMLElement;
       const gameBoard = document.getElementById('board') as HTMLElement;
@@ -122,18 +125,7 @@ function loadGame() {
             gameBoard.innerHTML = loadBoard();
 }
 
-function pageLoad() {
-    return `
-    <div class="page page--${gameSetup[0]}">
-    <header id="header"></header>
-    <main id="board"></main>
 
-    <dialog id="game-over">
-
-    </dialog>
-    </div>
-    `
-}
 
 
 settingsListener();
