@@ -49,8 +49,8 @@ export function loadBoard() {
 
 export function openExitDialog() {
     return `
-    <article class="popup__wrap--${gameSetup[0]}">
-        <span class=" popup__text--${gameSetup[0]}">Are you sure you want to quit the game?</span>  
+    <article class="popup__wrap popup__wrap--${gameSetup[0]}">
+        <span class="popup__text popup__text--${gameSetup[0]}">Are you sure you want to quit the game?</span>  
         <div class="popup-btn-group">
          <button id="btn-resume" class="btn btn__resume btn__resume--${gameSetup[0]}"></button>
          <button id="btn-quit" class="btn btn__end btn__end--${gameSetup[0]}"></span></button>
@@ -75,7 +75,7 @@ export function loadGameMenu() {
 
 export function loadEndResult() {
     return `
-    <article class="dialog__${gameSetup[0]}">
+    <article class="dialog__result dialog__result--${gameSetup[0]}">
         <h2 class="dialog__game-over dialog__game-over--${gameSetup[0]}">Game over</h2>
         <span class="subtext subtext--${gameSetup[0]}">Final Score</span>
                 <div class="player__count player__count--${gameSetup[0]}">
@@ -98,10 +98,10 @@ export function loadEndResult() {
 
 export function loadWinningScreen() {
     return `
-    <article class="dialog__${gameSetup[0]} dialog__${gameSetup[0]}--win">
+    <article class="dialog__result dialog__result--${gameSetup[0]}--win">
         <img class="confetti confetti--${gameSetup[0]}" src="/src/public/decks/theme_code/confetti.svg">
         <span class="subtext subtext--${gameSetup[0]} ">The winner is</span>
-        <b class="player__counter winner winner__${winner} winner__${winner}--${gameSetup[0]} player__counter--${gameSetup[0]}">${winner.toUpperCase()} PLAYER</b>
+        <b class="player__counter winner winner__${winner} player__counter--${gameSetup[0]}">${winner.toUpperCase()} PLAYER</b>
         <img class="winner__img" src="/src/public/decks/theme_${gameSetup[0]}/img_win_${winner}.svg">
 
         <a href="/src/pages/settings.html" class="btn btn__exit btn__exit--${gameSetup[0]} btn__home btn__home--${gameSetup[0]}"><span class="btn__exit--text"></span></a>

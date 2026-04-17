@@ -25,8 +25,8 @@
       );
     }
     &--game {
-      @include dFlex($fd: unset, $jc: unset, $g: 8px);
       &:before {
+      @include dFlex($fd: unset, $jc: unset, $g: 8px);
         content: url("./../../public/icons/color-palette.svg");
       }
     }

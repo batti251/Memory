@@ -151,7 +151,6 @@ function compareCards(targets: HTMLImageElement[]) {
     setTimeout(() => {
         targets[0].dataset.value == targets[1].dataset.value ? foundPair(targets) : coverCards(targets);
     }, 1000);
-    nextPlayer() //LÖSCHEN
 }
 
 /**

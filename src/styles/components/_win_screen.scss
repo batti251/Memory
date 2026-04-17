@@ -2,10 +2,9 @@
 
 .confetti{
     display: none;
-
     &--code{
     display: flex;
-    @include size($w: 100%, $h: 240px);
+    @include size($w: 100%, $h: 300px);
     @include position($p: absolute, $t:0);
     }
 }

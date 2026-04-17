@@ -35,7 +35,6 @@
   &__preview {
     @include dFlex($ai: end, $g: 24px);
     @include size($w: min(620px, 80%));
-
     @include respond(m){
       align-items: center;
       gap: 0;

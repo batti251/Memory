@@ -45,8 +45,9 @@ function checkGameRequirements() {
             }
         })
         collectGameSettings()
-    }))
 
+
+    }))
 }
 
 /**
@@ -155,7 +156,5 @@ function updateSettingBar(e: HTMLInputElement, i: number, s: string, p: string) 
         settingsBar.innerHTML = p + gameTheme.charAt(0).toUpperCase() + gameTheme.slice(1) + " " + s
         settingsBar.dataset.picked = "true";
     }
-
 }
-
 

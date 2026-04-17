@@ -9,10 +9,10 @@
   transform: translate(-50%, -50%);
 
   &__text {
+    width: 80%;
+      text-align: center;
     &--code {
       @include font($ff: RedRose, $fw: 700, $fs: clamp(1.25rem, 1.5rem, 2vw));
-      width: 80%;
-      text-align: center;
     }
 
     &--game {
@@ -22,8 +22,6 @@
         $fw: 700,
         $fs: clamp(1.25rem, 1.5rem, 2vw)
       );
-      width: 80%;
-      text-align: center;
     }
      &--da {
       @include font(
@@ -32,8 +30,6 @@
         $fw: 700,
         $fs: clamp(1.25rem, 1.5rem, 2vw)
       );
-      width: 80%;
-      text-align: center;
     }
     &--food{
       @include font(
@@ -42,41 +38,30 @@
         $fw: 700,
         $fs: clamp(1.25rem, 1.5rem, 2vw)
       );
-      width: 80%;
-      text-align: center;
     }
   }
 
   &__wrap {
-    &--code {
       padding: min(32px, 6%);
-      background-color: white;
+      @include size($w: 100%);
       @include dFlex($g: 32px);
-      @include size($w: 100%, $h: 100%);
+    &--code {
+      background-color: white;
     }
 
     &--game {
-      padding: min(32px, 6%);
       border-radius: 20px;
       background-color: #f0f6f9;
-      @include dFlex($g: 32px);
-      @include size($w: 100%, $h: 100%);
     }
 
     &--da {
-      padding: min(32px, 6%);
       border-radius: 20px;
       background-color: #F0F6F9;
-      @include dFlex($g: 32px);
-      @include size($w: 100%, $h: 100%);
     }
 
     &--food {
-      padding: min(32px, 6%);
       border-radius: 20px;
       background-color: #F6F6F6;
-      @include dFlex($g: 32px);
-      @include size($w: 100%, $h: 100%);
       &--win {
         background-color: white;
       }
