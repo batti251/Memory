@@ -347,8 +347,6 @@ function returnToSettings(btn: HTMLButtonElement) {
  */
 function closeDialog() {
     const dialog = document.getElementById('game-over') as HTMLDialogElement;
-        dialog.classList.remove('popup');
-        dialog.close();
         dialog.addEventListener('close', () => {
             dialog.classList.remove('popup');
             dialog.close();
