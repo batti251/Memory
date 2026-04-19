@@ -45,8 +45,6 @@ function checkGameRequirements() {
             }
         })
         collectGameSettings()
-
-
     }))
 }
 
@@ -104,7 +102,6 @@ initGame();
  */
 function initGame() {
     addEventListener('load', () => {
-
         const page = document.querySelector('.page')
         if (page) {
             playersFirstTurn();

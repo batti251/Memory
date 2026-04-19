@@ -48,7 +48,7 @@ export let players: {
 function initGame() {
     addEventListener('load', () => {
         if (gameSetup) {
-           loadCards();
+            loadCards();
         }
         shuffle()
     })
@@ -58,14 +58,14 @@ function initGame() {
  * generates the card-deck, that is used for the game
  */
 function loadCards() {
-     const gameBoardSize:number = parseInt(gameSetup[2])
-            cards = []
-            const gamePairs:number = gameBoardSize / 2
-            let x = 0
-            while (x < gamePairs) {
-                randomArray()
-                x++
-            }
+    const gameBoardSize: number = parseInt(gameSetup[2])
+    cards = []
+    const gamePairs: number = gameBoardSize / 2
+    let x = 0
+    while (x < gamePairs) {
+        randomArray()
+        x++
+    }
 }
 
 /**
@@ -262,14 +262,15 @@ function restartGame() {
 
 
 /**
- * Activates eventlisteners ingame for exit-button & draw-buttons
+ * Activates Eventlisteners ingame for button-functions
  */
 export function exitGameBtn() {
     const btnHeader = document.getElementById('btn-exit') as HTMLButtonElement;
     const btnDraw = document.getElementById('btn-exit-draw') as HTMLButtonElement;
     const btnRestart = document.getElementById('btn-restart') as HTMLButtonElement;
+    const dialog = document.getElementById('game-over') as HTMLDialogElement;
     if (btnHeader) {
-        openDialog(btnHeader);
+        loadExitMenuListener(dialog, btnHeader);
     }
     if (btnDraw) {
         returnToSettings(btnDraw);
@@ -280,75 +281,80 @@ export function exitGameBtn() {
 }
 
 /**
+ * Adds Eventlisteners to open the ingame menu
+ * It's rather opened by esc- , or click-event
+ * @param dialog - the according dialog-element
+ * @param btn - the id-button:(#btn-id) 
+ */
+function loadExitMenuListener(dialog: HTMLDialogElement, btn: HTMLButtonElement) {
+    document.addEventListener('keydown', (e) => {
+        if (e.key == "Escape" && !dialog.open) {
+            e.preventDefault();
+            openDialog(dialog)
+        } else if (e.key == "Escape" && dialog.open) {
+            closeDialog(dialog)
+        }
+    })
+
+    btn.addEventListener('click', () => {
+        openDialog(dialog);
+    })
+}
+
+
+/**
+ * Opens the dialog-element and adds relevant button-Eventlisteners
+ * @param dialog - the according dialog-element
+ */
+function openDialog(dialog: HTMLDialogElement) {
+    showDialog(dialog);
+    loadPopupBtnListner(dialog);
+}
+
+/**
+ * Closes the dialog-element
+ * @param dialog - the according dialog-element
+ */
+function closeDialog(dialog: HTMLDialogElement) {
+    dialog.classList.remove('popup');
+    dialog.close();
+}
+
+/**
  * eventlistener for starting a new game
  * @param btn - the clicked button
  */
 function startGame(btn: HTMLButtonElement) {
     btn.addEventListener('click', () => {
-        window.open('game.html', '_self')
+        window.open('game.html', '_self');
     })
 }
 
-/**
- * opens the dialog-modal and load relevant button-eventlisteners
- * @param btn - the clicked button
- */
-function openDialog(btn: HTMLButtonElement) {
-    const dialog = document.getElementById('game-over') as HTMLDialogElement;
-    btn.addEventListener('click', () => {
-        showDialog(dialog);
-        loadDialogCancelListener(dialog);
-        loadPopupBtn();
-    })
-}
 
 /**
  * shows the dialog-element
- * adds popup.class for specific design
+ * adds popup-class for modal-design
  */
-function showDialog(dialog:HTMLDialogElement) {
+function showDialog(dialog: HTMLDialogElement) {
     dialog.classList.add('popup');
     dialog.innerHTML = openExitDialog();
     dialog.showModal();
 }
 
 /**
- * Eventlistener to remove dialog-classes, when pressing 'esc'-key
- * @param dialog - the dedicated dialog-element
- */
-function loadDialogCancelListener(dialog:HTMLDialogElement) {
-    dialog.addEventListener('cancel', () => {
-            dialog.classList.remove('popup');
-            dialog.close();
-    })
-}
-
-    
-/**
  * Activates eventlisteners for popup-buttons 
  */
-function loadPopupBtn() {
+function loadPopupBtnListner(dialog: HTMLDialogElement) {
     const btnResume = document.getElementById('btn-resume');
     const btnQuit = document.getElementById('btn-quit') as HTMLButtonElement;
     if (btnResume) {
         btnResume.addEventListener('click', () => {
-            closeDialogOnClick();
+            closeDialog(dialog);
         })
     }
     if (btnQuit) {
-        returnToSettings(btnQuit)
+        returnToSettings(btnQuit);
     }
-}
-
-/**
- * CLoses the dialog-element, on click, from ${@link loadPopupBtn()} 
- */
-function closeDialogOnClick() {
-    const dialog = document.getElementById('game-over') as HTMLDialogElement;
-    if (dialog) {
-        dialog.classList.remove('popup');
-        dialog.close();
-} 
 }
 
 /**
@@ -362,8 +368,6 @@ function returnToSettings(btn: HTMLButtonElement) {
         deleteSessionStorage();
     })
 }
-
-       
 
 /**
  * deletes the sessionstorage 'memory'

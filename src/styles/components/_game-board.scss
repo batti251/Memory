@@ -19,7 +19,7 @@
     justify-content: center;
     gap: 8px;
     &--16 {
-      grid-template-columns: repeat(4, min(130px, 30%));
+      grid-template-columns: repeat(4, min(120px, 20%));
        @include respond(m){
          grid-template-columns: repeat(4, min(120px, 20%));
       }
