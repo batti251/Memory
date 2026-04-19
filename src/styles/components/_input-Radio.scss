@@ -2,11 +2,20 @@
 
 .settings {
   margin: 0 0 2% 0;
+  @include respond(m) {
+    margin: 0 0 4% 0;
+  }
   &__headlines {
-     &:before {
-        @include size($w:20px, $h: 30px);
-      }
+      @include dFlex($fd: unset, $jc: unset, $g: 16px);
+
+    &:before {
+      @include size($w: 20px, $h: 30px);
+    }
     &-h1 {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+
       @include font(
         $c: #303131,
         $fw: 700,
@@ -14,30 +23,46 @@
         $lh: 100%,
         $ff: "RedRose"
       );
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0; /* Abstand vom Text */
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: #f0ea6e; /* gelbe Linie */
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 10px;
+        height: 10px;
+        background: #f0ea6e;
+        transform: rotate(45deg); /* macht das Quadrat zum Diamanten */
+      }
     }
     &-h2 {
       @include font(
         $c: #303131,
         $fw: 700,
-        $fs: clamp(1.75rem, 2.25rem, 3vw),
+        $fs: clamp(1.75rem, 2rem, 3vw),
         $lh: 100%,
         $ff: "Almarai"
       );
     }
     &--game {
       &:before {
-      @include dFlex($fd: unset, $jc: unset, $g: 8px);
         content: url("/icons/color-palette.svg");
       }
     }
     &--player {
-      @include dFlex($fd: unset, $jc: unset, $g: 8px);
       &:before {
         content: url("/icons/chess_pawn.svg");
       }
     }
     &--board {
-      @include dFlex($fd: unset, $jc: unset, $g: 8px);
       &:before {
         content: url("/icons/card_board.svg");
       }
@@ -67,16 +92,15 @@
 }
 
 .label {
-    @include dFlex($fd: unset, $g: 8px);
-    height: 32px;
-    line-height: 100%;
+  @include dFlex($fd: unset, $g: 8px);
+  height: 32px;
+  line-height: 100%;
   &--radio {
     &:hover {
       cursor: pointer;
-     span {
+      span {
         font-weight: 700;
-
-     }
+      }
       span::after {
         content: url("/icons/line_wand.svg");
         filter: grayscale(0.5);
@@ -97,7 +121,7 @@
     }
   }
 
-  @include respond(m){
+  @include respond(m) {
     height: 24px;
   }
 }

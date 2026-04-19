@@ -1,7 +1,7 @@
 @use "./../abstracts/" as *;
 
 .main__wrap {
-  padding: 3%;
+  padding: 32px;
   @include dFlex($jc: space-around, $ai: unset);
   background-color: white;
 
@@ -11,7 +11,7 @@
   &:has(#theme-2:checked) #img-preview {
     background-image: url("/decks/theme_game/preview_game.svg");
   }
-  &:has(#theme-3:checked) #img-preview { 
+  &:has(#theme-3:checked) #img-preview {
     background-image: url("/decks/theme_da/preview_da.svg");
   }
   &:has(#theme-4:checked) #img-preview {
@@ -27,17 +27,22 @@
   &__wrap {
     @include dFlex($jc: space-between, $ai: start, $g: 8px, $fd: unset);
     height: 100%;
-    @include respond(l) {
+    @include respond(m) {
       flex-direction: column;
     }
-    
   }
   &__preview {
     @include dFlex($ai: end, $g: 24px);
-    @include size($w: min(620px, 80%));
-    @include respond(m){
+    @include size($w: min(540px, 80%));
+    @include respond(m) {
       align-items: center;
       gap: 0;
+    }
+  }
+  &__preselect {
+    width: 30%;
+    @include respond(m) {
+      width: 100%;
     }
   }
 }
