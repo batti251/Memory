@@ -19,12 +19,15 @@
     justify-content: center;
     gap: 8px;
     &--16 {
-      grid-template-columns: repeat(4, min(120px, 20%));
+      grid-template-columns: repeat(4, min(130px, 30%));
+       @include respond(m){
+         grid-template-columns: repeat(4, min(120px, 20%));
+      }
     }
 
     &--24,
     &--36 {
-      grid-template-columns: repeat(6, 12%);
+      grid-template-columns: repeat(6, min(112px, 20%));
       @include respond(m){
         grid-template-columns: repeat(4, 20%);
       }

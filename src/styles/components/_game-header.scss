@@ -19,7 +19,7 @@
   @include dFlex($fd: unset, $jc: space-between);
   padding: 0 2%;
   height: 72px;
-  @include respond(m){
+  @include respond(s){
     flex-direction: column-reverse;
     height: 120px;
     padding: 2% 0;
