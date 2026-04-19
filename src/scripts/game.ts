@@ -279,8 +279,6 @@ export function exitGameBtn() {
     }
 }
 
-
-
 /**
  * eventlistener for starting a new game
  * @param btn - the clicked button
@@ -296,8 +294,10 @@ function startGame(btn: HTMLButtonElement) {
  * @param btn - the clicked button
  */
 function openDialog(btn: HTMLButtonElement) {
+    const dialog = document.getElementById('game-over') as HTMLDialogElement;
     btn.addEventListener('click', () => {
-        showDialog();
+        showDialog(dialog);
+        loadDialogCancelListener(dialog);
         loadPopupBtn();
     })
 }
@@ -306,13 +306,24 @@ function openDialog(btn: HTMLButtonElement) {
  * shows the dialog-element
  * adds popup.class for specific design
  */
-function showDialog() {
-    const dialog = document.getElementById('game-over') as HTMLDialogElement;
+function showDialog(dialog:HTMLDialogElement) {
     dialog.classList.add('popup');
     dialog.innerHTML = openExitDialog();
     dialog.showModal();
 }
 
+/**
+ * Eventlistener to remove dialog-classes, when pressing 'esc'-key
+ * @param dialog - the dedicated dialog-element
+ */
+function loadDialogCancelListener(dialog:HTMLDialogElement) {
+    dialog.addEventListener('cancel', () => {
+            dialog.classList.remove('popup');
+            dialog.close();
+    })
+}
+
+    
 /**
  * Activates eventlisteners for popup-buttons 
  */
@@ -321,12 +332,23 @@ function loadPopupBtn() {
     const btnQuit = document.getElementById('btn-quit') as HTMLButtonElement;
     if (btnResume) {
         btnResume.addEventListener('click', () => {
-            closeDialog();
+            closeDialogOnClick();
         })
     }
     if (btnQuit) {
         returnToSettings(btnQuit)
     }
+}
+
+/**
+ * CLoses the dialog-element, on click, from ${@link loadPopupBtn()} 
+ */
+function closeDialogOnClick() {
+    const dialog = document.getElementById('game-over') as HTMLDialogElement;
+    if (dialog) {
+        dialog.classList.remove('popup');
+        dialog.close();
+} 
 }
 
 /**
@@ -341,19 +363,7 @@ function returnToSettings(btn: HTMLButtonElement) {
     })
 }
 
-
-/**
- * CLoses the dialog-element
- */
-function closeDialog() {
-    const dialog = document.getElementById('game-over') as HTMLDialogElement;
-        dialog.classList.remove('popup');
-        dialog.close();
-        dialog.addEventListener('close', () => {
-            dialog.classList.remove('popup');
-            dialog.close();
-    })
-}
+       
 
 /**
  * deletes the sessionstorage 'memory'
