@@ -105,10 +105,9 @@ function initGame() {
         const page = document.querySelector('.page')
         if (page) {
             playersFirstTurn();
-            /* page.outerHTML = loadPage();
+            page.outerHTML = loadPage();
             loadGame();
-            exitGameBtn(); */
-            page.outerHTML = loadGameMenu()
+            exitGameBtn();
         }
     })
 }

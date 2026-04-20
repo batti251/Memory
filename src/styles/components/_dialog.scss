@@ -142,7 +142,7 @@ b.player__counter {
   }
 }
 
-.draw {
+.draw__text {
   text-align: center;
   &--code {
     @include font(

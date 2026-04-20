@@ -1,12 +1,12 @@
 @use "./../abstracts/" as *;
 
 .settings {
-  margin: 0 0 2% 0;
+  margin: 0 0 8px 0;
   @include respond(m) {
     margin: 0 0 4% 0;
   }
   &__headlines {
-      @include dFlex($fd: unset, $jc: unset, $g: 16px);
+    @include dFlex($fd: unset, $jc: unset, $g: 16px);
 
     &:before {
       @include size($w: 20px, $h: 30px);
@@ -26,11 +26,11 @@
       &::after {
         content: "";
         position: absolute;
-        left: 0; /* Abstand vom Text */
+        left: 0;
         bottom: 0;
         width: 100%;
         height: 2px;
-        background: #f0ea6e; /* gelbe Linie */
+        background: #f0ea6e;
       }
       &::before {
         content: "";
@@ -40,7 +40,7 @@
         width: 10px;
         height: 10px;
         background: #f0ea6e;
-        transform: rotate(45deg); /* macht das Quadrat zum Diamanten */
+        transform: rotate(45deg);
       }
     }
     &-h2 {

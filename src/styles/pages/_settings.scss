@@ -1,7 +1,7 @@
 @use "./../abstracts/" as *;
 
 .main__wrap {
-  padding: 32px;
+  padding: 24px;
   @include dFlex($jc: space-around, $ai: unset);
   background-color: white;
 

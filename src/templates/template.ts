@@ -75,7 +75,7 @@ export function openExitDialog() {
 export function loadGameMenu() {
     return `
     <article class="dialog dialog__draw--${gameSetup[0]}">
-        <span class="draw draw--${gameSetup[0]}">DRAW</span>  
+        <span class="draw__text draw__text--${gameSetup[0]}">DRAW</span>  
         <div class="btn-group">
          <button id="btn-restart" class="btn btn__restart btn__restart--${gameSetup[0]}"><span class="btn__exit--text"></span></button>
          <button id="btn-exit-draw" class="btn btn__exit btn__exit btn__exit--${gameSetup[0]}"><span class="btn__exit--text">Exit</span></button>
