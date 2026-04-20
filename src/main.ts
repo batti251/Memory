@@ -8,6 +8,8 @@ let btn = document.getElementById('btn-start') as HTMLButtonElement;
 
 checkGameRequirements()
 initSetting();
+initGame();
+settingsListener();
 
 /**
  * init-function on load for settings-page
@@ -95,7 +97,6 @@ function startGame() {
     })
 }
 
-initGame();
 /**
  * Loads game screen
  * It renders header and gameBoard separately
@@ -121,11 +122,6 @@ function loadGame() {
             header.innerHTML = loadHeader();
             gameBoard.innerHTML = loadBoard();
 }
-
-
-
-
-settingsListener();
 
 /**
  * Function handler, according to the inputs-target-name

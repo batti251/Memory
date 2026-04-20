@@ -1,4 +1,5 @@
 import { loadGameMenu, loadWinningScreen, loadEndResult, openExitDialog, showResultScreen } from '../templates/template';
+import { CardDeck } from '../modules/card-deck-class';
 
 
 initGame();
@@ -13,11 +14,14 @@ let targets: HTMLImageElement[] = []
 let globalCount: {
     blue: number,
     orange: number,
-    [key: string]: number
+    [key:string]: number
 } = {
     blue: 0,
     orange: 0
 }
+let preload:number[] = []
+let gameCards:CardDeck
+
 
 
 export let players: {
@@ -40,7 +44,7 @@ export let players: {
     }
 }
 
-
+    
 /**
  * starts game initiation
  * it stores random card-values and shuffles them
@@ -49,9 +53,10 @@ function initGame() {
     addEventListener('load', () => {
         if (gameSetup) {
             loadCards();
+            shuffle();
+            gameCards = new CardDeck(preload, gameSetup)
         }
-        shuffle()
-    })
+    });
 }
 
 /**
@@ -75,7 +80,8 @@ function randomArray() {
     let number = randomNumberGen();
     let isNumberTaken = cards.includes(number);
     isNumberTaken ? randomArray() : cards.push(number, number);
-}
+    isNumberTaken ? "": preload.push(number);
+};
 
 /**
  * random number generator, according to the defined cardDeck
@@ -109,7 +115,6 @@ export function playersFirstTurn() {
         players.player1.color == "blue" ? players.player2.color = "orange" : players.player2.color = "blue"
     }
 }
-
 
 /**
  * listener to clicked elements
@@ -145,10 +150,15 @@ function flipCard(target: HTMLImageElement) {
  */
 function revealCard(target: HTMLImageElement) {
     setTimeout(() => {
-        target.src = `/decks/theme_${gameSetup[0]}/cards/card_${target.dataset.value}.svg`
+        if (target.dataset.value) {
+            let cardNumber = target.dataset.value;
+            let cardImg = gameCards.cards.find(c => c.src.includes(cardNumber))
+            if (cardImg) {
+                target.src = cardImg.src  ;
+            }
+        }
     }, 500);
 }
-
 
 /**
  * Compares elements-value, when targets array is filled by 2 items during ${@link flipCard}
@@ -274,7 +284,6 @@ function restartGame() {
     exitGameBtn();
 }
 
-
 /**
  * Activates Eventlisteners ingame for button-functions
  */
@@ -315,7 +324,6 @@ function loadExitMenuListener(dialog: HTMLDialogElement, btn: HTMLButtonElement)
     })
 }
 
-
 /**
  * Opens the dialog-element and adds relevant button-Eventlisteners
  * @param dialog - the according dialog-element
@@ -343,7 +351,6 @@ function startGame(btn: HTMLButtonElement) {
         window.open('game.html', '_self');
     })
 }
-
 
 /**
  * shows the dialog-element
