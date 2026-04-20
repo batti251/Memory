@@ -121,9 +121,10 @@ function uncoverCard() {
         let target = e.target as HTMLImageElement
         let clickedTarget = target.classList;
         if (clickedTarget.contains("card__cover") && target.dataset.select == "false") {
+            target.dataset.select = "true";
             targets.length == 2 ? targets = [] : "";
             flipCard(target);
-        }
+        } 
     })
 }
 
@@ -209,6 +210,7 @@ function foundPair(targets: HTMLImageElement[]) {
 function coverCards(targets: HTMLImageElement[]) {
     targets.forEach(t => {
         t.classList.remove('flip');
+        t.dataset.select = "false";
         t.src = `/decks/theme_${gameSetup[0]}/cover_${gameSetup[0]}.svg`
     });
     nextPlayer();
