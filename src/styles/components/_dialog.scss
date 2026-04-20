@@ -57,6 +57,18 @@
       }
     }
   }
+
+  &__draw{
+    &--code{
+      background-color: #303131;
+    }
+    &--game{
+      background-color: #294f60;
+    }
+    &--food{
+      background-color: #f3832d;
+    }
+  }
 }
 
 b.player__counter {
@@ -135,7 +147,7 @@ b.player__counter {
   &--code {
     @include font(
       $ff: "RedRose",
-      $c: white,
+      $c: #4DD5BC,
       $fw: 700,
       $fs: clamp(1.5rem, 3rem, 4vw)
     );
@@ -153,7 +165,7 @@ b.player__counter {
   &--da {
     @include font(
       $ff: "Figtree",
-      $c: white,
+      $c: #FD5B4F,
       $fw: 700,
       $fs: clamp(1.5rem, 3rem, 4vw)
     );

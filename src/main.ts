@@ -1,5 +1,5 @@
 import './styles/main.scss';
-import { loadHeader, loadBoard, loadPage } from './templates/template';
+import { loadHeader, loadBoard, loadPage, loadGameMenu } from './templates/template';
 import { playersFirstTurn, exitGameBtn } from './scripts/game';
 
 let gameSettings: string[] = [];
@@ -105,9 +105,10 @@ function initGame() {
         const page = document.querySelector('.page')
         if (page) {
             playersFirstTurn();
-            page.outerHTML = loadPage();
+            /* page.outerHTML = loadPage();
             loadGame();
-            exitGameBtn();
+            exitGameBtn(); */
+            page.outerHTML = loadGameMenu()
         }
     })
 }
