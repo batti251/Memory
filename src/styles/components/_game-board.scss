@@ -33,7 +33,7 @@
     }
     
     &--36{
-      grid-template-columns: repeat(6, min(72px, 20%));
+      grid-template-columns: repeat(6, min(80px, 20%));
       @include respond(m){
         grid-template-columns: repeat(4, 20%);
       }
