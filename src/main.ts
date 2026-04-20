@@ -1,6 +1,6 @@
 import './styles/main.scss';
-import { loadHeader, loadBoard, loadPage, loadGameMenu } from './templates/template';
-import { playersFirstTurn, exitGameBtn } from './scripts/game';
+import { loadHeader, loadBoard, loadPage } from './templates/template';
+import { playersFirstTurn, exitGameBtn , gameEnd} from './scripts/game';
 
 let gameSettings: string[] = [];
 export let gameSettingsPicked: string[] = [];

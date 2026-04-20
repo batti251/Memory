@@ -1,4 +1,4 @@
-import { loadGameMenu, loadWinningScreen, loadEndResult, openExitDialog } from '../templates/template';
+import { loadGameMenu, loadWinningScreen, loadEndResult, openExitDialog, showResultScreen } from '../templates/template';
 
 
 initGame();
@@ -214,22 +214,34 @@ function coverCards(targets: HTMLImageElement[]) {
     nextPlayer();
 }
 
-
 /**
  * Handler to check, if the game has ended
- * It ends, as soon as all matched cards are flipped 
+ * It ends, as soon as all matched cards are flipped
+ * It changes the dialogs DOM accordingly
  */
-function gameEnd() {
-    let dialog = document.getElementById('game-over') as HTMLElement;
+export function gameEnd() {
+    const dialog = document.getElementById('game-over') as HTMLDialogElement;
     const leftoverCards = document.querySelectorAll('[data-select="false"]')
     if (leftoverCards.length == 0) {
         if (returnWinner()) {
-            dialog.classList.add('dialog');
-            dialog.innerHTML = loadEndResult()
+            showResultScreen(dialog)
             setTimeout(() => {
-                dialog.innerHTML = loadWinningScreen()
+                showWinnerScreen(dialog)
             }, 1500);
         }
+    }
+}
+
+/**
+ * Switches the dialog-elements content
+ * @param dialog - the according dialog-Element
+ */
+function showWinnerScreen(dialog: HTMLDialogElement) {
+    const result = dialog.querySelector('.dialog__result') as HTMLElement;
+    const winning = document.getElementById('result-screen') as HTMLElement;
+    if (result && winning) {
+        result.style.display = 'none';
+        winning.style.display = 'block';
     }
 }
 

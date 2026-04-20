@@ -85,6 +85,16 @@ export function loadGameMenu() {
 }
 
 
+export function showResultScreen(dialog: HTMLDialogElement) {
+    dialog.classList.add('dialog');
+    dialog.innerHTML = `
+  ${loadEndResult()}
+  <div id="result-screen" style="display:none;">
+    ${loadWinningScreen()}
+  </div>
+`;
+}
+
 export function loadEndResult() {
     return `
     <article class="dialog__result dialog__result--${gameSetup[0]}">

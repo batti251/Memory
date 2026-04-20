@@ -27,6 +27,7 @@
   &__wrap {
     @include dFlex($jc: space-between, $ai: start, $g: 8px, $fd: unset);
     height: 100%;
+    margin: 32px 0 0 0;
     @include respond(m) {
       flex-direction: column;
     }
