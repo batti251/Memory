@@ -1,7 +1,8 @@
 @use "./../abstracts/" as *;
 
 .main__wrap {
-  padding: 24px;
+  width: 80%;
+    padding: 60px 0 0 160px;
   @include dFlex($jc: space-around, $ai: unset);
   background-color: white;
 
@@ -17,9 +18,19 @@
   &:has(#theme-4:checked) #img-preview {
     background-image: url("/decks/theme_food/preview_food.svg");
   }
+
+  @include respond(l){
+    padding: 40px 0 0 72px;
+
+  }
   @include respond(m) {
     flex-direction: column;
     justify-content: center;
+  }
+
+  @include respond(s){
+    padding: 10%;
+
   }
 }
 
@@ -27,7 +38,7 @@
   &__wrap {
     @include dFlex($jc: space-between, $ai: start, $g: 8px, $fd: unset);
     height: 100%;
-    margin: 32px 0 0 0;
+    margin: 24px 0 0 0;
     @include respond(m) {
       flex-direction: column;
     }
@@ -50,7 +61,7 @@
 
 #img-preview {
   aspect-ratio: 1 / 1;
-  width: 80%;
+  width: 70%;
   background-repeat: no-repeat;
   background-size: contain;
 }

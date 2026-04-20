@@ -1,7 +1,7 @@
 @use "../abstracts/" as *;
 
 .settings__bar {
-  @include dFlex($fd: unset, $jc: space-evenly, $g: 16px);
+  @include dFlex($fd: unset, $jc: space-evenly);
   @include size($w: 100%, $h: 80px);
   padding: 0 8px;
   background-color: #f6f6f6;
@@ -45,13 +45,17 @@
     }
   }
 
+  @include respond(l) {
+    flex-direction: column;
+    height: auto;
+    padding: 8px;
+  }
+
   @include respond(m) {
     height: 100%;
     width: min(160px, 90%);
     padding: 8px;
   }
 
-  @include respond(m) {
-    flex-direction: column;
-  }
+
 }

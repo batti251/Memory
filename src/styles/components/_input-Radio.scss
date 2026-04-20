@@ -19,7 +19,7 @@
       @include font(
         $c: #303131,
         $fw: 700,
-        $fs: clamp(3em, 4rem, 7vw),
+        $fs: clamp(3rem, 3.375rem, 5vw),
         $lh: 100%,
         $ff: "RedRose"
       );
@@ -47,7 +47,7 @@
       @include font(
         $c: #303131,
         $fw: 700,
-        $fs: clamp(1.75rem, 2rem, 3vw),
+        $fs: clamp(1.25rem, 1.5rem, 3vw),
         $lh: 100%,
         $ff: "Almarai"
       );
@@ -81,7 +81,7 @@
       @include size($w: 400px, $h: 100%);
       @include font(
         $c: #303131,
-        $fs: clamp(1.125rem, 2rem, 2vw),
+        $fs: clamp(1rem, 1.25rem, 2vw),
         $ff: "Almarai"
       );
       @include respond(m) {
