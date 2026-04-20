@@ -1,6 +1,6 @@
 export interface DeckConfig {
     src: number[];
-    setup: string[];
+    theme: string[];
 }
 
 export interface Card {

@@ -13,6 +13,7 @@ settingsListener();
 
 /**
  * init-function on load for settings-page
+ * it resets all Input-fields
  */
 function initSetting() {
     const url = window.location.href
@@ -66,7 +67,7 @@ function collectGameSettings() {
 
 /**
  * Adds the Game-Setting to the gameSettingsPicked-Array 
- * @param e - the according Game-Setting
+ * @param e - all Input-Elements
  */
 function addGameSetting(e: HTMLInputElement) {
     if (e.checked && e.dataset.preview) {
@@ -143,11 +144,12 @@ function settingsListener() {
 }
 
 /**
- * Changes the preselect game settings in the setting-bar
- * @param e - the events input-target
+ * Updates the text in the settings bar based on the selected input element.
+ * 
+ * @param e - the targeted Input-element
  * @param i - index from the setting-bar (0: theme, 1: first playerm 2: board size)
- * @param s - word-suffix
- * @param p - prefix-word 
+ * @param s - suffix appended to the displayed text.
+ * @param p - prefix prepended to the displayed text. 
  */
 function updateSettingBar(e: HTMLInputElement, i: number, s: string, p: string) {
     const settingsBarRef = document.querySelectorAll('.settings__bar-list')

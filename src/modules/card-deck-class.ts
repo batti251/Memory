@@ -2,19 +2,26 @@ import { DeckConfig, Card } from "../interfaces/cards-interface";
 
 export class CardDeck implements DeckConfig {
     src: number[];
-    setup: string[];
+    theme: string[];
     cards: Card[] = [];
 
-    constructor(src: number[], setup: string[]) {
+    constructor(src: number[], theme: string[]) {
         this.src = src;
-        this.setup = setup;
-        this.cards = initCardDeck(src, setup);
+        this.theme = theme;
+        this.cards = initCardDeck(src, theme);
     }
 }
 
-function initCardDeck(src: number[], setup: string[]): Card[] {
+/**
+ * creates card objects with preloaded images based on given card-IDs and theme
+ * 
+ * @param src - all card-ID's for the current game
+ * @param theme - list of the current game-settings
+ * @returns - list of Card objects
+ */
+function initCardDeck(src: number[], theme: string[]): Card[] {
     return src.map((e) => {
-        const imagePath = `/decks/theme_${setup[0]}/cards/card_${e}.svg`;
+        const imagePath = `/decks/theme_${theme[0]}/cards/card_${e}.svg`;
         const img = new Image();
         img.src = imagePath;
 
