@@ -11,9 +11,20 @@
     background-color: #f0ea6e;
     @include font($ff: "RedRose");
     @include size($w: min(250px, 50%));
-    > img {
+    > .img {
       aspect-ratio: 1 / 1;
       width: min(40px, 20%);
+      
+    }
+    &:hover{
+      > .icon {
+        &__controller {
+        rotate: -30deg;
+      }
+      &__arrow{
+        height: 20px;
+      }
+    }
     }
   }
   &--start-game {
@@ -23,6 +34,11 @@
     > img {
       aspect-ratio: 1 / 1;
       width: min(40px, 20%);
+    }
+    &:not(:disabled):hover {
+      > img {
+        rotate: -15deg;
+      }
     }
   }
 
@@ -47,6 +63,10 @@
       &::before {
         content: url("/icons/exit.svg");
       }
+      &:hover{
+        border: 3px solid #4DD5BC;
+        box-shadow: 4px 4px 6px #4DD5BC33;
+      }
     }
 
     &--game {
@@ -57,6 +77,13 @@
       &::before {
         content: url("/icons/exit.svg");
       }
+      &:hover{
+        border: 3px solid #E71C4F;
+        box-shadow: 3px 3px 5px #2F2E2E33;
+        &::before {
+        content: url("/icons/exit_red.svg");
+      }
+      }
     }
 
     &--da {
@@ -65,6 +92,16 @@
       @include font($ff: "Figtree", $c: #1e7594, $fw: 700, $fs: clamp(1.125rem, 1.25rem, 1vw));
       &::before {
         content: url("/icons/exit_blue.svg");
+      }
+      &:hover{
+        color: white;
+        background-color: #1E7594;
+        border: unset;
+        box-shadow: 3px 3px 5px #2F2E2E33;
+         &::before {
+        content: url("/icons/exit_white.svg");
+        filter: drop-shadow(3px 2px 4.5px rgba(29, 29, 29, 0.35));
+      }
       }
     }
 
@@ -75,6 +112,16 @@
       @include font($ff: "DeliusUnicase", $c: #f3832d, $fw: 700, $fs: clamp(1.125rem, 1.175rem, 1vw));
       &::before {
         content: url("/icons/exit_orange.svg");
+      }
+      &:hover{
+        background-color: #F3832D;
+        color: white;
+        border: 3px solid #f3832d;
+        box-shadow: 4px 4px 4px #f3832d33;
+        filter: drop-shadow(2px 2px 3px #1D1D1D33);
+        &::before {
+        content: url("/icons/exit_white.svg");
+      }
       }
     }
   }
@@ -146,6 +193,10 @@
       &::before {
         content: "Back to game";
       }
+      &:hover{
+        border: 3px solid #3ABCA4;
+        background-color: #66CFBCB2;
+      }
     }
 
     &--game {
@@ -157,6 +208,11 @@
       );
       &::before {
         content: "No, back to game";
+      }
+      &:hover{
+        border: 2px solid #E71C4F;
+        background-color: #F2C7DA14;
+        color: #ED1B76;
       }
     }
 
@@ -170,6 +226,11 @@
       &::before {
         content: "Back to game";
       }
+      &:hover{
+        color: white;
+        background-color: #1E7594;
+        box-shadow: 3px 3px 5px #2F2E2E33;
+      }
     }
 
     &--food {
@@ -181,6 +242,10 @@
       );
       &::before {
         content: "No, back to game";
+      }
+      &:hover{
+        background-color: #F3832D;
+        box-shadow: 3px 3px 5px #00000033;
       }
     }
   }

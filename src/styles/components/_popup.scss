@@ -69,7 +69,7 @@
   }
   &-btn-group {
     @include dFlex($fd: unset, $g: 8px);
-    @include size($w: 100%);
+    @include size($w: 100%, $h:70px);
 
     @include respond(s) {
       flex-direction: column;
